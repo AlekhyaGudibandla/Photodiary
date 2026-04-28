@@ -1,0 +1,63 @@
+:root {
+  /* Cute Color Palette */
+  --color-primary: #FFB7B2;
+  /* Soft Coral/Pink */
+  --color-primary-dark: #FF9E99;
+  --color-secondary: #B5EAD7;
+  /* Mint Green */
+  --color-background: #FFF9F9;
+  /* Very light pinkish white */
+  --color-surface: #FFFFFF;
+  --color-text: #4A4A4A;
+  --color-text-light: #888888;
+  --color-accent: #E2F0CB;
+  /* Pale Lime */
+  --color-error: #FF6961;
+
+  /* Shadows */
+  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.1);
+
+  /* Radius */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 30px;
+  --radius-full: 9999px;
+
+  /* Fonts */
+  --font-family: 'Outfit', 'Quicksand', sans-serif;
+}
+
+body {
+  background-color: var(--color-background);
+  /* Polka dot pattern */
+  background-image: radial-gradient(var(--color-secondary) 2px, transparent 2px), radial-gradient(var(--color-primary) 2px, transparent 2px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+
+  color: var(--color-text);
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Reset for nice box model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+  outline: none;
+}

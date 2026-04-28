@@ -1,0 +1,149 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+enum Role {
+  FREE
+  PREMIUM
+}
+
+enum ProcessingStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+enum SharePermission {
+  VIEW
+  EDIT
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  role      Role     @default(FREE)
+  createdAt DateTime @default(now())
+
+  entries Entry[]
+  goals   Goal[]
+  bucketItems BucketItem[]
+  collections Collection[]
+  likes   Like[]
+  comments Comment[]
+}
+
+model Goal {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  isCompleted Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
+}
+
+model Entry {
+  id               Int              @id @default(autoincrement())
+  title            String?
+  content          String
+  mood             String?          // Mood score as text
+  aiEnabled        Boolean          @default(false)
+  isPublic         Boolean          @default(false)
+  shareHash        String?          @unique
+  sharePermission  SharePermission  @default(VIEW)
+  processingStatus ProcessingStatus @default(PENDING)
+  aiInsights       Json? // Stores structured AI results
+  aiVersion        Int              @default(1)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
+
+  media Media[]
+  tags  Tag[]
+  collections Collection[]
+  likes Like[]
+  comments Comment[]
+}
+
+model Media {
+  id        Int      @id @default(autoincrement())
+  url       String
+  publicId  String? // Cloudinary public_id
+  type      String // "image" | "video"
+  imageHash String? // For deduplication
+  createdAt DateTime @default(now())
+
+  entryId Int
+  entry   Entry @relation(fields: [entryId], references: [id])
+}
+
+model Tag {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  entries Entry[]
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  entryId   Int
+  entry     Entry    @relation(fields: [entryId], references: [id])
+  createdAt DateTime @default(now())
+  @@unique([userId, entryId])
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  content   String
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  entryId   Int
+  entry     Entry    @relation(fields: [entryId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model BucketItem {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  isCompleted Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
+}
+
+model Collection {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  coverImage  String?
+  isPublic    Boolean  @default(false)
+  shareHash   String?  @unique
+  sharePermission SharePermission @default(VIEW)
+  createdAt   DateTime @default(now())
+
+  userId  Int
+  user    User @relation(fields: [userId], references: [id])
+  
+  entries Entry[]
+}
