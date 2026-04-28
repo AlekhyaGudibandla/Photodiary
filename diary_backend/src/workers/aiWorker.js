@@ -32,7 +32,7 @@ const initAIWorker = () => {
           data: {
             aiInsights: aiResult,
             processingStatus: 'COMPLETED',
-            mood: aiResult.mood?.score || entry.mood,
+            mood: aiResult.mood?.score ? String(aiResult.mood.score) : entry.mood,
             tags: {
               connectOrCreate: aiResult.tags?.map((tag) => ({
                 where: { name: tag },

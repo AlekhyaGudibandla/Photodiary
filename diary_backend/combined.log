@@ -1506,3 +1506,21 @@
 {"level":"info","message":"AI Response generated (1246 chars)","service":"photodiary-backend","timestamp":"2026-04-28T04:15:32.452Z"}
 {"level":"info","message":"AI Response generated (968 chars)","service":"photodiary-backend","timestamp":"2026-04-28T04:15:34.290Z"}
 {"level":"info","message":"Socket disconnected: 2whBlxF90pYwivVgAAAV","service":"photodiary-backend","timestamp":"2026-04-28T04:54:10.808Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-28T05:52:10.912Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-28T05:52:10.943Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-28T05:52:11.248Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-28T05:52:12.700Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-28T05:52:12.728Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-28T05:52:13.023Z"}
+{"level":"info","message":"Socket connected: 1rlCcWivicT3LnIoAAAB","service":"photodiary-backend","timestamp":"2026-04-28T05:52:46.310Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-28T05:52:46.332Z"}
+{"level":"info","message":"Socket disconnected: 1rlCcWivicT3LnIoAAAB","service":"photodiary-backend","timestamp":"2026-04-28T05:52:46.656Z"}
+{"level":"info","message":"Socket connected: mb7tWsgEhiCHoSUZAAAD","service":"photodiary-backend","timestamp":"2026-04-28T05:52:46.664Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-28T05:52:46.672Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-28T05:52:52.116Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-28T05:52:52.146Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-28T05:52:52.484Z"}
+{"level":"info","message":"Socket connected: PiD85FQQwtpBfyEvAAAB","service":"photodiary-backend","timestamp":"2026-04-28T05:52:52.624Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-28T05:52:52.633Z"}
+{"level":"info","message":"AI Response generated (256 chars)","service":"photodiary-backend","timestamp":"2026-04-28T05:52:56.674Z"}
+{"level":"info","message":"AI Response generated (876 chars)","service":"photodiary-backend","timestamp":"2026-04-28T05:52:58.421Z"}
