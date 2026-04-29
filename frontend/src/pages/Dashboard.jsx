@@ -26,6 +26,15 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetchEntries();
+
+    const handleRefresh = () => fetchEntries();
+    window.addEventListener('entryCreated', handleRefresh);
+    window.addEventListener('entryDeleted', handleRefresh);
+    
+    return () => {
+      window.removeEventListener('entryCreated', handleRefresh);
+      window.removeEventListener('entryDeleted', handleRefresh);
+    };
   }, []);
 
   // Filter entries based on selectedDate

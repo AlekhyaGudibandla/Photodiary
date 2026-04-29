@@ -32,6 +32,8 @@ const AICopilot = () => {
     }
   }, [input]);
 
+  const [showVoiceMenu, setShowVoiceMenu] = useState(false);
+
   return (
     <div className="flex-1 flex flex-col h-screen overflow-hidden p-10 relative bg-mesh">
       <Header />
@@ -54,7 +56,66 @@ const AICopilot = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 relative">
+              <div className="relative">
+                <button 
+                  onClick={() => setShowVoiceMenu(!showVoiceMenu)}
+                  className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all ${showVoiceMenu ? 'bg-primary text-black' : 'bg-white/5 text-gray-500 hover:text-white hover:bg-white/10'}`}
+                  title="Voice Settings"
+                >
+                  <Settings size={20} className={showVoiceMenu ? 'animate-spin-slow' : ''} />
+                </button>
+
+                <AnimatePresence>
+                  {showVoiceMenu && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                      className="absolute right-0 top-14 w-64 max-h-[300px] overflow-y-auto bg-[#0a0a0a] border border-white/10 rounded-2xl p-2 z-[100] shadow-2xl backdrop-blur-xl"
+                    >
+                      <div className="p-3 text-[10px] font-black text-gray-500 uppercase tracking-widest border-b border-white/5 mb-2">
+                        Select Personality Voice
+                      </div>
+                      <div className="space-y-1">
+                        {availableVoices.filter(v => v.lang.startsWith('en')).map((voice, idx) => (
+                          <div key={idx} className="flex items-center gap-1">
+                            <button
+                              onClick={() => {
+                                saveVoice(voice);
+                                setShowVoiceMenu(false);
+                              }}
+                              className={`flex-1 text-left px-4 py-3 rounded-xl text-xs transition-all flex items-center justify-between ${
+                                selectedVoice?.name === voice.name 
+                                  ? 'bg-primary/20 text-primary border border-primary/20' 
+                                  : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                              }`}
+                            >
+                              <span className="truncate">{voice.name.replace('Google ', '').replace('Microsoft ', '').replace('Desktop', '')}</span>
+                              {selectedVoice?.name === voice.name && <div className="w-1.5 h-1.5 rounded-full bg-primary" />}
+                            </button>
+                            <button 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                const utterance = new SpeechSynthesisUtterance("Hello, I am your Photodiary companion.");
+                                utterance.voice = voice;
+                                utterance.rate = 1.0;
+                                window.speechSynthesis.cancel();
+                                window.speechSynthesis.speak(utterance);
+                              }}
+                              className="p-2 text-gray-600 hover:text-primary transition-all"
+                              title="Test Voice"
+                            >
+                              <Volume2 size={14} />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
               <button 
                 onClick={resetChat}
                 className="w-12 h-12 rounded-2xl bg-white/5 text-gray-500 hover:text-white hover:bg-white/10 transition-all flex items-center justify-center"

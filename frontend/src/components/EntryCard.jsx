@@ -13,11 +13,11 @@ const moodIcons = {
   10: { icon: <Sun size={14} />, color: 'text-orange-400', bg: 'bg-orange-400/10' },
 };
 
-const EntryCard = ({ entry, onUpdate }) => {
+const EntryCard = ({ entry, onUpdate, readOnly = false }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [liked, setLiked] = useState(entry.likedByMe);
   const [likesCount, setLikesCount] = useState(entry.likesCount || 0);
-  const { openEntryModal } = useModal();
+  const { openEntryModal, openShareModal } = useModal();
 
   const getIcon = () => {
     if (entry.media?.length > 0) return <ImageIcon size={18} />;
@@ -47,6 +47,7 @@ const EntryCard = ({ entry, onUpdate }) => {
         try {
             await apiRequest(`/entries/${entry.id}`, 'DELETE');
             if (onUpdate) onUpdate();
+            window.dispatchEvent(new CustomEvent('entryDeleted'));
         } catch (err) {
             console.error(err);
         }
@@ -55,11 +56,7 @@ const EntryCard = ({ entry, onUpdate }) => {
 
   const handleShare = (e) => {
     e.stopPropagation();
-    if (entry.shareHash) {
-      const url = `${window.location.origin}/shared/${entry.shareHash}`;
-      navigator.clipboard.writeText(url);
-      alert('Share link copied to clipboard!');
-    }
+    openShareModal('entry', entry, onUpdate);
   };
 
   const moodColorMap = {
@@ -122,51 +119,51 @@ const EntryCard = ({ entry, onUpdate }) => {
             ))}
           </div>
 
-          <div className="flex items-center justify-between pt-2 border-t border-white/5">
-            <div className="flex items-center gap-6">
-                <button 
-                    onClick={handleLike}
-                    className={`flex items-center gap-2 transition-colors ${liked ? 'text-red-500' : 'text-gray-500 hover:text-red-500'}`}
-                >
-                    <Heart size={16} fill={liked ? 'currentColor' : 'none'} />
-                    <span className="text-[10px] font-bold tracking-widest uppercase">{likesCount > 0 ? likesCount : 'Love'}</span>
-                </button>
-                <button 
-                    onClick={(e) => { e.stopPropagation(); openEntryModal(entry); }}
-                    className="flex items-center gap-2 text-gray-500 hover:text-primary transition-colors"
-                >
-                    <MessageCircle size={16} />
-                    <span className="text-[10px] font-bold tracking-widest uppercase">{entry.commentsCount > 0 ? entry.commentsCount : 'Thoughts'}</span>
-                </button>
+          {!readOnly && (
+            <div className="flex items-center justify-between pt-2 border-t border-white/5">
+              <div className="flex items-center gap-6">
+                  <button 
+                      onClick={handleLike}
+                      className={`flex items-center gap-2 transition-colors ${liked ? 'text-red-500' : 'text-gray-500 hover:text-red-500'}`}
+                  >
+                      <Heart size={16} fill={liked ? 'currentColor' : 'none'} />
+                      <span className="text-[10px] font-bold tracking-widest uppercase">{likesCount > 0 ? likesCount : 'Love'}</span>
+                  </button>
+                  <button 
+                      onClick={(e) => { e.stopPropagation(); openEntryModal(entry); }}
+                      className="flex items-center gap-2 text-gray-500 hover:text-primary transition-colors"
+                  >
+                      <MessageCircle size={16} />
+                      <span className="text-[10px] font-bold tracking-widest uppercase">{entry.commentsCount > 0 ? entry.commentsCount : 'Thoughts'}</span>
+                  </button>
+              </div>
+              
+              <div className="flex items-center gap-2">
+                  <button 
+                      onClick={handleShare}
+                      className="flex items-center gap-2 px-3 py-1.5 bg-secondary/10 text-secondary rounded-xl hover:bg-secondary/20 transition-all border border-secondary/10"
+                  >
+                      <Share2 size={14} />
+                      <span className="text-[10px] font-black uppercase tracking-widest">Share</span>
+                  </button>
+                  
+                  <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button 
+                          onClick={(e) => { e.stopPropagation(); openEntryModal(entry); }}
+                          className="p-2 text-gray-500 hover:text-white transition-colors"
+                      >
+                          <Edit2 size={16} />
+                      </button>
+                      <button 
+                          onClick={(e) => { e.stopPropagation(); handleDelete(); }}
+                          className="p-2 text-gray-500 hover:text-red-500 transition-colors"
+                      >
+                          <Trash2 size={18} />
+                      </button>
+                  </div>
+              </div>
             </div>
-            
-            <div className="flex items-center gap-2">
-                {entry.isPublic && (
-                    <button 
-                        onClick={handleShare}
-                        className="flex items-center gap-2 px-3 py-1.5 bg-secondary/10 text-secondary rounded-xl hover:bg-secondary/20 transition-all border border-secondary/10"
-                    >
-                        <Share2 size={14} />
-                        <span className="text-[10px] font-black uppercase tracking-widest">Share</span>
-                    </button>
-                )}
-                
-                <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <button 
-                        onClick={(e) => { e.stopPropagation(); openEntryModal(entry); }}
-                        className="p-2 text-gray-500 hover:text-white transition-colors"
-                    >
-                        <Edit2 size={16} />
-                    </button>
-                    <button 
-                        onClick={(e) => { e.stopPropagation(); handleDelete(); }}
-                        className="p-2 text-gray-500 hover:text-red-500 transition-colors"
-                    >
-                        <Trash2 size={18} />
-                    </button>
-                </div>
-            </div>
-          </div>
+          )}
         </div>
       </motion.div>
     </div>

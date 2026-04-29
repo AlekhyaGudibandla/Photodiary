@@ -4,7 +4,7 @@ import { X, Search, Check, Loader2, Plus, Calendar } from 'lucide-react';
 import { apiRequest } from '../utils/api';
 import { format } from 'date-fns';
 
-const AddExistingToCollectionModal = ({ isOpen, onClose, collectionId, onAdded }) => {
+const AddExistingToCollectionModal = ({ isOpen, onClose, collectionId, sharedHash = null, onAdded }) => {
   const [entries, setEntries] = useState([]);
   const [selectedIds, setSelectedIds] = useState([]);
   const [search, setSearch] = useState('');
@@ -38,9 +38,12 @@ const AddExistingToCollectionModal = ({ isOpen, onClose, collectionId, onAdded }
     if (selectedIds.length === 0) return;
     setSaving(true);
     try {
-      await Promise.all(selectedIds.map(entryId => 
-        apiRequest(`/collections/${collectionId}/entries/${entryId}`, 'POST')
-      ));
+      await Promise.all(selectedIds.map(entryId => {
+        const endpoint = sharedHash 
+          ? `/shared/collection/${sharedHash}/entries/${entryId}`
+          : `/collections/${collectionId}/entries/${entryId}`;
+        return apiRequest(endpoint, 'POST');
+      }));
       if (onAdded) onAdded();
       onClose();
     } catch (e) {

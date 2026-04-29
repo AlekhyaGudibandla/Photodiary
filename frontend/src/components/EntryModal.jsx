@@ -5,6 +5,8 @@ import { format } from 'date-fns';
 import { apiRequest, fileUpload } from '../utils/api';
 import { useModal } from '../context/ModalContext';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 const moods = [
   { icon: <Frown />, label: 'Sad', color: 'text-blue-400', bg: 'bg-blue-400/10', score: 2 },
   { icon: <CloudRain />, label: 'Gloomy', color: 'text-indigo-400', bg: 'bg-indigo-400/10', score: 4 },
@@ -13,7 +15,7 @@ const moods = [
   { icon: <Sun />, label: 'Amazing', color: 'text-orange-400', bg: 'bg-orange-400/10', score: 10 },
 ];
 
-const EntryModal = ({ isOpen, onClose, onEntryCreated, editingEntry = null, collectionId = null }) => {
+const EntryModal = ({ isOpen, onClose, onEntryCreated, editingEntry = null, collectionId = null, sharedHash = null }) => {
   const { openCamera } = useModal();
   const [title, setTitle] = useState(editingEntry?.title || '');
   const [content, setContent] = useState(editingEntry?.content || '');
@@ -92,25 +94,40 @@ const EntryModal = ({ isOpen, onClose, onEntryCreated, editingEntry = null, coll
       // Upload only new previews
       for (const item of previews) {
         if (item.file) {
-          const result = await fileUpload('/upload', item.file);
+          let result;
+          if (sharedHash) {
+            // Use shared upload endpoint for collaborative mode
+            result = await fileUpload(`/shared/entry/${sharedHash}/upload`, item.file);
+          } else {
+            result = await fileUpload('/upload', item.file);
+          }
           uploadedMedia.push(result);
-        } else if (item.url) {
-            // Keep existing media? Backend update logic might need to be smarter
-            // For now we just send the new ones or re-link existing ones if needed
         }
       }
 
       const payload = {
         title: title || 'Untitled Moment',
         content,
-        aiEnabled,
+        aiEnabled: sharedHash ? false : aiEnabled, // Disable AI for shared edits
         isPublic,
         mood: selectedMood.score,
         media: uploadedMedia.length > 0 ? uploadedMedia : undefined
       };
 
       let result;
-      if (editingEntry) {
+      if (sharedHash) {
+        // Collaborative mode — save via shared endpoint
+        const res = await fetch(`${API_URL}/shared/entry/${sharedHash}`, {
+          method: 'PUT',
+          headers: { 
+            'Content-Type': 'application/json',
+            ...(localStorage.getItem('token') ? { Authorization: `Bearer ${localStorage.getItem('token')}` } : {})
+          },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) throw new Error('Failed to save shared entry');
+        result = await res.json();
+      } else if (editingEntry) {
         result = await apiRequest(`/entries/${editingEntry.id}`, 'PUT', payload);
       } else {
         result = await apiRequest('/entries', 'POST', payload);
@@ -122,9 +139,12 @@ const EntryModal = ({ isOpen, onClose, onEntryCreated, editingEntry = null, coll
       }
 
       if (onEntryCreated) onEntryCreated(result);
+      if (!sharedHash) {
+        window.dispatchEvent(new CustomEvent('entryCreated'));
+      }
       onClose();
       // Reset
-      if (!editingEntry) {
+      if (!editingEntry && !sharedHash) {
         setTitle('');
         setContent('');
         setPreviews([]);
@@ -162,22 +182,22 @@ const EntryModal = ({ isOpen, onClose, onEntryCreated, editingEntry = null, coll
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="w-full max-w-2xl bg-[#12121A] border border-white/5 rounded-[40px] shadow-2xl relative z-10 overflow-hidden"
+            className="w-full max-w-2xl bg-[#12121A] border border-white/5 rounded-[40px] shadow-2xl relative z-10 overflow-hidden flex flex-col max-h-[90vh]"
           >
             {/* Top Pattern Decor */}
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent z-20" />
             
-            <div className="p-8 md:p-10">
+            <div className="p-8 md:p-10 overflow-y-auto custom-scrollbar flex-1 relative z-10">
               <div className="flex items-center justify-between mb-10">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shadow-lg shadow-primary/5">
                     <Sparkles size={24} />
                   </div>
                   <div>
-                    <h2 className="text-2xl font-heading font-black text-white tracking-tight">New Reflection</h2>
+                    <h2 className="text-2xl font-heading font-black text-white tracking-tight">{sharedHash ? 'Collaborative Edit' : 'New Reflection'}</h2>
                     <div className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-                      <p className="text-[10px] text-gray-500 font-black uppercase tracking-[0.2em]">Crafting Memories</p>
+                      <div className={`w-1.5 h-1.5 rounded-full ${sharedHash ? 'bg-green-400' : 'bg-secondary'} animate-pulse`} />
+                      <p className="text-[10px] text-gray-500 font-black uppercase tracking-[0.2em]">{sharedHash ? 'Shared Entry' : 'Crafting Memories'}</p>
                     </div>
                   </div>
                 </div>

@@ -4,6 +4,7 @@ import { X, Link as LinkIcon, Globe, Lock, Check, Copy, Shield, ShieldAlert, Edi
 import { apiRequest } from '../utils/api';
 
 const ShareModal = ({ isOpen, onClose, type, item, onUpdate }) => {
+  const [localItem, setLocalItem] = useState(item);
   const [isPublic, setIsPublic] = useState(item?.isPublic || false);
   const [permission, setPermission] = useState(item?.sharePermission || 'VIEW');
   const [copied, setCopied] = useState(false);
@@ -11,25 +12,27 @@ const ShareModal = ({ isOpen, onClose, type, item, onUpdate }) => {
 
   useEffect(() => {
     if (item) {
+      setLocalItem(item);
       setIsPublic(item.isPublic || false);
       setPermission(item.sharePermission || 'VIEW');
     }
   }, [item]);
 
   const handleTogglePublic = async () => {
-    if (!item) return;
+    if (!localItem) return;
     const newValue = !isPublic;
-    setIsPublic(newValue); // Optimistic update
+    setIsPublic(newValue);
     setSaving(true);
     try {
-      const endpoint = type === 'entry' ? `/entries/${item.id}` : `/collections/${item.id}`;
+      const endpoint = type === 'entry' ? `/entries/${localItem.id}` : `/collections/${localItem.id}`;
       const res = await apiRequest(endpoint, 'PUT', { 
         isPublic: newValue,
         sharePermission: permission 
       });
+      setLocalItem(res);
       if (onUpdate) onUpdate(res);
     } catch (e) {
-      setIsPublic(!newValue); // Rollback
+      setIsPublic(!newValue);
       console.error(e);
     } finally {
       setSaving(false);
@@ -41,11 +44,12 @@ const ShareModal = ({ isOpen, onClose, type, item, onUpdate }) => {
     if (isPublic) {
       setSaving(true);
       try {
-        const endpoint = type === 'entry' ? `/entries/${item.id}` : `/collections/${item.id}`;
+        const endpoint = type === 'entry' ? `/entries/${localItem.id}` : `/collections/${localItem.id}`;
         const res = await apiRequest(endpoint, 'PUT', { 
           isPublic,
           sharePermission: p 
         });
+        setLocalItem(res);
         if (onUpdate) onUpdate(res);
       } catch (e) {
         console.error(e);
@@ -55,9 +59,10 @@ const ShareModal = ({ isOpen, onClose, type, item, onUpdate }) => {
     }
   };
 
-  const shareUrl = `${window.location.origin}/shared/${type === 'collection' ? 'collection/' : ''}${item?.shareHash}`;
+  const shareUrl = `${window.location.origin}/shared/${type}/${localItem?.shareHash}`;
 
   const copyToClipboard = () => {
+    if (!localItem?.shareHash) return;
     navigator.clipboard.writeText(shareUrl);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -141,17 +146,24 @@ const ShareModal = ({ isOpen, onClose, type, item, onUpdate }) => {
                     {/* Link Copy */}
                     <div>
                       <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-3 block">Shareable Link</label>
-                      <div className="flex gap-2">
-                        <div className="flex-1 bg-black/40 border border-white/5 rounded-xl px-4 py-3 text-xs text-gray-400 overflow-hidden text-ellipsis whitespace-nowrap">
-                          {shareUrl}
+                      {localItem?.shareHash ? (
+                        <div className="flex gap-2">
+                          <div className="flex-1 bg-black/40 border border-white/5 rounded-xl px-4 py-3 text-xs text-gray-400 overflow-hidden text-ellipsis whitespace-nowrap">
+                            {shareUrl}
+                          </div>
+                          <button 
+                            onClick={copyToClipboard}
+                            className="w-12 h-12 rounded-xl bg-primary text-black flex items-center justify-center hover:scale-105 active:scale-95 transition-all"
+                          >
+                            {copied ? <Check size={18} /> : <Copy size={18} />}
+                          </button>
                         </div>
-                        <button 
-                          onClick={copyToClipboard}
-                          className="w-12 h-12 rounded-xl bg-primary text-black flex items-center justify-center hover:scale-105 active:scale-95 transition-all"
-                        >
-                          {copied ? <Check size={18} /> : <Copy size={18} />}
-                        </button>
-                      </div>
+                      ) : (
+                        <div className="bg-black/40 border border-white/5 rounded-xl px-4 py-3 text-xs text-gray-500 italic flex items-center gap-2">
+                          <div className="w-3 h-3 border-2 border-gray-500/30 border-t-gray-500 rounded-full animate-spin" />
+                          Generating shareable link...
+                        </div>
+                      )}
                     </div>
                   </motion.div>
                 )}

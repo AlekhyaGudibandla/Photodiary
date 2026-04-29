@@ -13,6 +13,7 @@ import BucketList from "./pages/BucketList";
 import Collections from "./pages/Collections";
 import Settings from "./pages/Settings";
 import PlaceholderPage from "./pages/PlaceholderPage";
+import SharedView from "./pages/SharedView";
 import { LineChart, Bookmark, Library } from "lucide-react";
 import "./index.css";
 
@@ -38,6 +39,7 @@ function App() {
           <CallProvider>
             <Routes>
             <Route path="/login" element={<Auth />} />
+            <Route path="/shared/:type/:hash" element={<SharedView />} />
 
             <Route path="/" element={
               <ProtectedRoute>

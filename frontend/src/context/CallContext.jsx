@@ -29,19 +29,29 @@ export const CallProvider = ({ children }) => {
     // Initialize Voices
     useEffect(() => {
         const loadVoices = () => {
-            const voices = window.speechSynthesis.getVoices();
+            let voices = window.speechSynthesis.getVoices();
             if (voices.length > 0) {
-                setAvailableVoices(voices);
+                // Sort voices to put "Google" and "Natural" at the top
+                const sortedVoices = [...voices].sort((a, b) => {
+                    const aLower = a.name.toLowerCase();
+                    const bLower = b.name.toLowerCase();
+                    const aScore = (aLower.includes('google') ? 2 : 0) + (aLower.includes('natural') ? 2 : 0);
+                    const bScore = (bLower.includes('google') ? 2 : 0) + (bLower.includes('natural') ? 2 : 0);
+                    return bScore - aScore;
+                });
+
+                setAvailableVoices(sortedVoices);
                 const savedVoiceName = localStorage.getItem('preferredVoice');
-                let voice = voices.find(v => v.name === savedVoiceName);
+                let voice = sortedVoices.find(v => v.name === savedVoiceName);
                 
                 if (!voice) {
                     // Default to a high-quality natural voice
-                    voice = voices.find(v => 
-                        v.name.includes('Google') || 
+                    voice = sortedVoices.find(v => 
+                        v.name.includes('Google US English') || 
                         v.name.includes('Natural') || 
-                        v.name.includes('Premium')
-                    ) || voices[0];
+                        v.name.includes('Microsoft Aria') || // Edge's best voice
+                        v.name.includes('Google')
+                    ) || sortedVoices[0];
                 }
                 setSelectedVoice(voice);
             }

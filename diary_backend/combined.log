@@ -1524,3 +1524,487 @@
 {"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-28T05:52:52.633Z"}
 {"level":"info","message":"AI Response generated (256 chars)","service":"photodiary-backend","timestamp":"2026-04-28T05:52:56.674Z"}
 {"level":"info","message":"AI Response generated (876 chars)","service":"photodiary-backend","timestamp":"2026-04-28T05:52:58.421Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T05:33:04.008Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T05:33:04.087Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T05:33:04.482Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T05:33:06.059Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T05:33:06.092Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T05:33:06.413Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T05:33:29.035Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T05:33:29.063Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T05:33:29.300Z"}
+{"level":"info","message":"Socket connected: E1c60pE4_vkAoUmbAAAB","service":"photodiary-backend","timestamp":"2026-04-29T05:33:33.250Z"}
+{"level":"info","message":"User null joined room user_null","service":"photodiary-backend","timestamp":"2026-04-29T05:33:33.297Z"}
+{"level":"info","message":"AI Response generated (1116 chars)","service":"photodiary-backend","timestamp":"2026-04-29T05:33:37.978Z"}
+{"level":"info","message":"AI Response generated (1063 chars)","service":"photodiary-backend","timestamp":"2026-04-29T05:33:40.066Z"}
+{"level":"info","message":"AI Response generated (1228 chars)","service":"photodiary-backend","timestamp":"2026-04-29T05:33:47.307Z"}
+{"level":"info","message":"AI Response generated (1149 chars)","service":"photodiary-backend","timestamp":"2026-04-29T05:33:49.454Z"}
+{"level":"info","message":"AI Response generated (490 chars)","service":"photodiary-backend","timestamp":"2026-04-29T05:34:06.158Z"}
+{"level":"info","message":"AI Response generated (894 chars)","service":"photodiary-backend","timestamp":"2026-04-29T05:39:11.074Z"}
+{"level":"info","message":"AI Response generated (1094 chars)","service":"photodiary-backend","timestamp":"2026-04-29T05:39:13.049Z"}
+{"level":"info","message":"Socket disconnected: E1c60pE4_vkAoUmbAAAB","service":"photodiary-backend","timestamp":"2026-04-29T05:44:12.987Z"}
+{"level":"info","message":"AI Response generated (871 chars)","service":"photodiary-backend","timestamp":"2026-04-29T05:44:13.872Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T05:44:38.314Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T05:44:38.343Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T05:44:38.576Z"}
+{"level":"info","message":"Socket connected: q0saw8oLLBP9ClohAAAC","service":"photodiary-backend","timestamp":"2026-04-29T05:44:47.023Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T05:44:47.034Z"}
+{"level":"info","message":"AI Response generated (1176 chars)","service":"photodiary-backend","timestamp":"2026-04-29T05:44:51.567Z"}
+{"level":"info","message":"AI Response generated (649 chars)","service":"photodiary-backend","timestamp":"2026-04-29T05:44:53.080Z"}
+{"level":"info","message":"AI Response generated (588 chars)","service":"photodiary-backend","timestamp":"2026-04-29T05:44:54.660Z"}
+{"level":"info","message":"AI Response generated (1009 chars)","service":"photodiary-backend","timestamp":"2026-04-29T05:44:56.402Z"}
+{"clientVersion":"5.22.0","level":"error","message":"Entry Update Error: \nInvalid `prisma.entry.findUnique()` invocation in\nD:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\index.js:181:41\n\n  178 const { id } = req.params;\n  179 const { title, content, isPublic, mood, sharePermission } = req.body;\n  180 \n→ 181 const existing = await prisma.entry.findUnique({\n        where: {\n          userId: 1,\n      +   id: Int\n        }\n      })\n\nArgument `id` is missing.","name":"PrismaClientValidationError","service":"photodiary-backend","stack":"PrismaClientValidationError: \nInvalid `prisma.entry.findUnique()` invocation in\nD:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\index.js:181:41\n\n  178 const { id } = req.params;\n  179 const { title, content, isPublic, mood, sharePermission } = req.body;\n  180 \n→ 181 const existing = await prisma.entry.findUnique({\n        where: {\n          userId: 1,\n      +   id: Int\n        }\n      })\n\nArgument `id` is missing.\n    at Ua (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:80:1375)\n    at Vg.handleRequestError (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:6960)\n    at Vg.handleAndLogRequestError (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:6624)\n    at Vg.request (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:6308)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async a (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:191:9642)\n    at async D:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\index.js:181:22","timestamp":"2026-04-29T05:45:28.947Z"}
+{"level":"info","message":"Socket disconnected: q0saw8oLLBP9ClohAAAC","service":"photodiary-backend","timestamp":"2026-04-29T05:45:57.020Z"}
+{"level":"info","message":"Socket connected: anl0Ih7r_JFyk3ElAAAE","service":"photodiary-backend","timestamp":"2026-04-29T05:46:11.981Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T05:46:11.992Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T05:47:58.420Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T05:47:58.451Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T05:47:58.723Z"}
+{"level":"info","message":"Socket connected: DWOMHqNY9XNu_iCOAAAB","service":"photodiary-backend","timestamp":"2026-04-29T05:47:58.765Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T05:47:58.773Z"}
+{"clientVersion":"5.22.0","level":"error","message":"Entry Update Error: \nInvalid `prisma.entry.findFirst()` invocation in\nD:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\index.js:181:41\n\n  178 const { id } = req.params;\n  179 const { title, content, isPublic, mood, sharePermission } = req.body;\n  180 \n→ 181 const existing = await prisma.entry.findFirst({\n        where: {\n          userId: 1,\n      +   id: {\n      +     equals: Int | IntFieldRefInput,\n      +     in: Int[] | ListIntFieldRefInput,\n      +     notIn: Int[] | ListIntFieldRefInput,\n      +     lt: Int | IntFieldRefInput,\n      +     lte: Int | IntFieldRefInput,\n      +     gt: Int | IntFieldRefInput,\n      +     gte: Int | IntFieldRefInput,\n      +     not: Int | NestedIntFilter\n      +   }\n        }\n      })\n\nArgument `id` is missing.","name":"PrismaClientValidationError","service":"photodiary-backend","stack":"PrismaClientValidationError: \nInvalid `prisma.entry.findFirst()` invocation in\nD:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\index.js:181:41\n\n  178 const { id } = req.params;\n  179 const { title, content, isPublic, mood, sharePermission } = req.body;\n  180 \n→ 181 const existing = await prisma.entry.findFirst({\n        where: {\n          userId: 1,\n      +   id: {\n      +     equals: Int | IntFieldRefInput,\n      +     in: Int[] | ListIntFieldRefInput,\n      +     notIn: Int[] | ListIntFieldRefInput,\n      +     lt: Int | IntFieldRefInput,\n      +     lte: Int | IntFieldRefInput,\n      +     gt: Int | IntFieldRefInput,\n      +     gte: Int | IntFieldRefInput,\n      +     not: Int | NestedIntFilter\n      +   }\n        }\n      })\n\nArgument `id` is missing.\n    at Ua (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:80:1375)\n    at Vg.handleRequestError (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:6960)\n    at Vg.handleAndLogRequestError (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:6624)\n    at Vg.request (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:6308)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async a (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:191:9642)\n    at async D:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\index.js:181:22","timestamp":"2026-04-29T05:56:14.893Z"}
+{"level":"info","message":"Socket disconnected: DWOMHqNY9XNu_iCOAAAB","service":"photodiary-backend","timestamp":"2026-04-29T05:57:58.830Z"}
+{"level":"info","message":"Socket connected: EIv21EuA9Ldq0b_JAAAD","service":"photodiary-backend","timestamp":"2026-04-29T05:58:00.267Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T05:58:00.296Z"}
+{"level":"info","message":"Socket disconnected: EIv21EuA9Ldq0b_JAAAD","service":"photodiary-backend","timestamp":"2026-04-29T05:58:00.810Z"}
+{"level":"info","message":"Socket connected: m5-hvD09vWICkQABAAAF","service":"photodiary-backend","timestamp":"2026-04-29T05:58:00.818Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T05:58:00.824Z"}
+{"level":"info","message":"AI Response generated (1085 chars)","service":"photodiary-backend","timestamp":"2026-04-29T05:58:05.341Z"}
+{"level":"info","message":"AI Response generated (873 chars)","service":"photodiary-backend","timestamp":"2026-04-29T05:58:07.629Z"}
+{"clientVersion":"5.22.0","level":"error","message":"Entry Update Error: \nInvalid `prisma.entry.findFirst()` invocation in\nD:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\index.js:181:41\n\n  178 const { id } = req.params;\n  179 const { title, content, isPublic, mood, sharePermission } = req.body;\n  180 \n→ 181 const existing = await prisma.entry.findFirst({\n        where: {\n          userId: 1,\n      +   id: {\n      +     equals: Int | IntFieldRefInput,\n      +     in: Int[] | ListIntFieldRefInput,\n      +     notIn: Int[] | ListIntFieldRefInput,\n      +     lt: Int | IntFieldRefInput,\n      +     lte: Int | IntFieldRefInput,\n      +     gt: Int | IntFieldRefInput,\n      +     gte: Int | IntFieldRefInput,\n      +     not: Int | NestedIntFilter\n      +   }\n        }\n      })\n\nArgument `id` is missing.","name":"PrismaClientValidationError","service":"photodiary-backend","stack":"PrismaClientValidationError: \nInvalid `prisma.entry.findFirst()` invocation in\nD:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\index.js:181:41\n\n  178 const { id } = req.params;\n  179 const { title, content, isPublic, mood, sharePermission } = req.body;\n  180 \n→ 181 const existing = await prisma.entry.findFirst({\n        where: {\n          userId: 1,\n      +   id: {\n      +     equals: Int | IntFieldRefInput,\n      +     in: Int[] | ListIntFieldRefInput,\n      +     notIn: Int[] | ListIntFieldRefInput,\n      +     lt: Int | IntFieldRefInput,\n      +     lte: Int | IntFieldRefInput,\n      +     gt: Int | IntFieldRefInput,\n      +     gte: Int | IntFieldRefInput,\n      +     not: Int | NestedIntFilter\n      +   }\n        }\n      })\n\nArgument `id` is missing.\n    at Ua (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:80:1375)\n    at Vg.handleRequestError (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:6960)\n    at Vg.handleAndLogRequestError (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:6624)\n    at Vg.request (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:6308)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async a (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:191:9642)\n    at async D:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\index.js:181:22","timestamp":"2026-04-29T05:58:20.126Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T05:59:28.808Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T05:59:28.837Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T05:59:29.121Z"}
+{"level":"info","message":"Socket connected: HabH3kcG2xh12QRuAAAB","service":"photodiary-backend","timestamp":"2026-04-29T05:59:29.281Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T05:59:29.294Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T05:59:48.404Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T05:59:48.439Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T05:59:48.742Z"}
+{"level":"info","message":"Socket connected: 0O5mEVlwmap3aNpnAAAB","service":"photodiary-backend","timestamp":"2026-04-29T05:59:48.789Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T05:59:48.801Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T06:12:23.924Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T06:12:23.958Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T06:12:24.219Z"}
+{"level":"info","message":"Socket connected: QefAA4UlY40wzBfYAAAB","service":"photodiary-backend","timestamp":"2026-04-29T06:12:24.259Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T06:12:24.270Z"}
+{"level":"info","message":"Socket disconnected: QefAA4UlY40wzBfYAAAB","service":"photodiary-backend","timestamp":"2026-04-29T06:15:21.936Z"}
+{"level":"info","message":"Socket connected: 1IFGjSZDEwmkixeXAAAD","service":"photodiary-backend","timestamp":"2026-04-29T06:15:23.608Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T06:15:23.614Z"}
+{"level":"info","message":"Socket disconnected: 1IFGjSZDEwmkixeXAAAD","service":"photodiary-backend","timestamp":"2026-04-29T06:15:24.066Z"}
+{"level":"info","message":"Socket connected: KFHJs0gZNvmIfHMdAAAF","service":"photodiary-backend","timestamp":"2026-04-29T06:15:24.080Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T06:15:24.087Z"}
+{"level":"info","message":"AI Response generated (614 chars)","service":"photodiary-backend","timestamp":"2026-04-29T06:15:28.306Z"}
+{"level":"info","message":"AI Response generated (1016 chars)","service":"photodiary-backend","timestamp":"2026-04-29T06:15:30.312Z"}
+{"level":"info","message":"Entry 20 queued for AI processing","service":"photodiary-backend","timestamp":"2026-04-29T06:15:42.391Z"}
+{"entryId":20,"jobId":"entry_20","level":"info","message":"Processing job entry_20 for entry 20","service":"photodiary-backend","timestamp":"2026-04-29T06:15:42.418Z"}
+{"level":"info","message":"Starting AI analysis...","service":"photodiary-backend","timestamp":"2026-04-29T06:15:44.107Z"}
+{"latency":520,"level":"info","message":"AI Analysis complete. Latency: 520ms","service":"photodiary-backend","timestamp":"2026-04-29T06:15:44.627Z"}
+{"level":"info","message":"AI Response generated (1217 chars)","service":"photodiary-backend","timestamp":"2026-04-29T06:15:46.793Z"}
+{"level":"info","message":"Socket disconnected: KFHJs0gZNvmIfHMdAAAF","service":"photodiary-backend","timestamp":"2026-04-29T06:16:05.749Z"}
+{"level":"info","message":"Socket connected: CJFY9YtZYE0emgLDAAAH","service":"photodiary-backend","timestamp":"2026-04-29T06:16:06.721Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T06:16:06.727Z"}
+{"level":"info","message":"Socket disconnected: CJFY9YtZYE0emgLDAAAH","service":"photodiary-backend","timestamp":"2026-04-29T06:16:07.154Z"}
+{"level":"info","message":"Socket connected: NdocT30shNJaptftAAAJ","service":"photodiary-backend","timestamp":"2026-04-29T06:16:07.162Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T06:16:07.169Z"}
+{"level":"info","message":"AI Response generated (669 chars)","service":"photodiary-backend","timestamp":"2026-04-29T06:16:10.102Z"}
+{"level":"info","message":"AI Response generated (659 chars)","service":"photodiary-backend","timestamp":"2026-04-29T06:16:13.831Z"}
+{"level":"info","message":"Entry 21 queued for AI processing","service":"photodiary-backend","timestamp":"2026-04-29T06:16:33.991Z"}
+{"entryId":21,"jobId":"entry_21","level":"info","message":"Processing job entry_21 for entry 21","service":"photodiary-backend","timestamp":"2026-04-29T06:16:34.016Z"}
+{"level":"info","message":"Starting AI analysis...","service":"photodiary-backend","timestamp":"2026-04-29T06:16:35.765Z"}
+{"latency":535,"level":"info","message":"AI Analysis complete. Latency: 535ms","service":"photodiary-backend","timestamp":"2026-04-29T06:16:36.300Z"}
+{"level":"info","message":"AI Response generated (879 chars)","service":"photodiary-backend","timestamp":"2026-04-29T06:16:39.030Z"}
+{"level":"info","message":"Socket disconnected: NdocT30shNJaptftAAAJ","service":"photodiary-backend","timestamp":"2026-04-29T06:16:39.155Z"}
+{"level":"info","message":"Socket connected: bgrlgj4iACdP7RH2AAAL","service":"photodiary-backend","timestamp":"2026-04-29T06:16:40.534Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T06:16:40.537Z"}
+{"level":"info","message":"Socket disconnected: bgrlgj4iACdP7RH2AAAL","service":"photodiary-backend","timestamp":"2026-04-29T06:16:41.056Z"}
+{"level":"info","message":"Socket connected: 6yhVGnEYfrLs1mvnAAAN","service":"photodiary-backend","timestamp":"2026-04-29T06:16:41.065Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T06:16:41.072Z"}
+{"level":"info","message":"AI Response generated (1057 chars)","service":"photodiary-backend","timestamp":"2026-04-29T06:16:43.857Z"}
+{"level":"info","message":"AI Response generated (1118 chars)","service":"photodiary-backend","timestamp":"2026-04-29T06:16:46.519Z"}
+{"level":"info","message":"AI Response generated (888 chars)","service":"photodiary-backend","timestamp":"2026-04-29T06:17:03.434Z"}
+{"level":"info","message":"AI Response generated (1151 chars)","service":"photodiary-backend","timestamp":"2026-04-29T06:17:06.448Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T06:37:25.857Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T06:37:25.887Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T06:37:26.191Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T06:37:27.695Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T06:37:27.722Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T06:37:28.015Z"}
+{"level":"info","message":"Socket connected: F73HGj27j_CwUageAAAB","service":"photodiary-backend","timestamp":"2026-04-29T06:37:28.057Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T06:37:28.070Z"}
+{"level":"info","message":"Socket disconnected: F73HGj27j_CwUageAAAB","service":"photodiary-backend","timestamp":"2026-04-29T06:55:47.465Z"}
+{"level":"info","message":"Socket connected: WCxaWtEVfrpIjUUXAAAD","service":"photodiary-backend","timestamp":"2026-04-29T07:26:23.282Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T07:26:23.288Z"}
+{"level":"info","message":"Socket disconnected: WCxaWtEVfrpIjUUXAAAD","service":"photodiary-backend","timestamp":"2026-04-29T07:26:23.720Z"}
+{"level":"info","message":"Socket connected: NLGc3rMpnd_YWHpfAAAF","service":"photodiary-backend","timestamp":"2026-04-29T07:26:23.730Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T07:26:23.740Z"}
+{"level":"info","message":"AI Response generated (947 chars)","service":"photodiary-backend","timestamp":"2026-04-29T07:26:28.293Z"}
+{"level":"info","message":"AI Response generated (1069 chars)","service":"photodiary-backend","timestamp":"2026-04-29T07:26:31.106Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T07:26:55.496Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T07:26:55.525Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T07:26:55.793Z"}
+{"level":"info","message":"Socket connected: O3t2ovpFCKRn9ZwtAAAB","service":"photodiary-backend","timestamp":"2026-04-29T07:26:55.869Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T07:26:55.880Z"}
+{"level":"info","message":"AI Response generated (971 chars)","service":"photodiary-backend","timestamp":"2026-04-29T07:27:04.216Z"}
+{"level":"info","message":"AI Response generated (1063 chars)","service":"photodiary-backend","timestamp":"2026-04-29T07:27:06.547Z"}
+{"level":"info","message":"Socket connected: TefYZzXVgrQcJGVFAAAD","service":"photodiary-backend","timestamp":"2026-04-29T07:27:09.628Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T07:27:09.633Z"}
+{"level":"info","message":"Socket disconnected: TefYZzXVgrQcJGVFAAAD","service":"photodiary-backend","timestamp":"2026-04-29T07:27:10.123Z"}
+{"level":"info","message":"Socket connected: 2JCgGKumOy-JHy8MAAAF","service":"photodiary-backend","timestamp":"2026-04-29T07:27:10.131Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T07:27:10.136Z"}
+{"level":"info","message":"Entry 22 queued for AI processing","service":"photodiary-backend","timestamp":"2026-04-29T07:27:38.826Z"}
+{"entryId":22,"jobId":"entry_22","level":"info","message":"Processing job entry_22 for entry 22","service":"photodiary-backend","timestamp":"2026-04-29T07:27:38.973Z"}
+{"level":"info","message":"Starting AI analysis...","service":"photodiary-backend","timestamp":"2026-04-29T07:27:41.081Z"}
+{"latency":530,"level":"info","message":"AI Analysis complete. Latency: 530ms","service":"photodiary-backend","timestamp":"2026-04-29T07:27:41.611Z"}
+{"level":"info","message":"AI Response generated (1233 chars)","service":"photodiary-backend","timestamp":"2026-04-29T07:27:46.688Z"}
+{"level":"info","message":"AI Response generated (1021 chars)","service":"photodiary-backend","timestamp":"2026-04-29T07:27:48.971Z"}
+{"level":"info","message":"Socket connected: St6QyvBLGFcM8d-hAAAH","service":"photodiary-backend","timestamp":"2026-04-29T07:28:25.260Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T07:28:25.265Z"}
+{"level":"info","message":"Socket disconnected: St6QyvBLGFcM8d-hAAAH","service":"photodiary-backend","timestamp":"2026-04-29T07:28:26.252Z"}
+{"level":"info","message":"Socket connected: vJedXtclFc-y0-aJAAAJ","service":"photodiary-backend","timestamp":"2026-04-29T07:28:26.262Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T07:28:26.268Z"}
+{"level":"info","message":"Socket connected: Cjx2AxK5r4pCzvqxAAAL","service":"photodiary-backend","timestamp":"2026-04-29T07:28:47.516Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T07:28:47.521Z"}
+{"level":"info","message":"Socket disconnected: Cjx2AxK5r4pCzvqxAAAL","service":"photodiary-backend","timestamp":"2026-04-29T07:28:48.010Z"}
+{"level":"info","message":"Socket connected: F-G1nl2PJlXEHVBCAAAN","service":"photodiary-backend","timestamp":"2026-04-29T07:28:48.016Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T07:28:48.021Z"}
+{"level":"info","message":"Socket disconnected: F-G1nl2PJlXEHVBCAAAN","service":"photodiary-backend","timestamp":"2026-04-29T07:28:48.814Z"}
+{"level":"info","message":"Socket disconnected: vJedXtclFc-y0-aJAAAJ","service":"photodiary-backend","timestamp":"2026-04-29T07:28:50.017Z"}
+{"level":"info","message":"Socket disconnected: 2JCgGKumOy-JHy8MAAAF","service":"photodiary-backend","timestamp":"2026-04-29T07:28:51.256Z"}
+{"level":"info","message":"Socket connected: -3uGmHMuMzHDzV_IAAAP","service":"photodiary-backend","timestamp":"2026-04-29T09:27:44.291Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T09:27:44.299Z"}
+{"level":"info","message":"Socket disconnected: -3uGmHMuMzHDzV_IAAAP","service":"photodiary-backend","timestamp":"2026-04-29T09:27:44.723Z"}
+{"level":"info","message":"Socket connected: ZN6zcGUqaCB5K6HFAAAR","service":"photodiary-backend","timestamp":"2026-04-29T09:27:44.732Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T09:27:44.735Z"}
+{"level":"info","message":"Entry 23 queued for AI processing","service":"photodiary-backend","timestamp":"2026-04-29T09:28:12.901Z"}
+{"entryId":23,"jobId":"entry_23","level":"info","message":"Processing job entry_23 for entry 23","service":"photodiary-backend","timestamp":"2026-04-29T09:28:12.937Z"}
+{"level":"info","message":"Starting AI analysis...","service":"photodiary-backend","timestamp":"2026-04-29T09:28:15.860Z"}
+{"latency":564,"level":"info","message":"AI Analysis complete. Latency: 564ms","service":"photodiary-backend","timestamp":"2026-04-29T09:28:16.424Z"}
+{"level":"info","message":"AI Response generated (1101 chars)","service":"photodiary-backend","timestamp":"2026-04-29T09:28:18.538Z"}
+{"level":"info","message":"AI Response generated (1102 chars)","service":"photodiary-backend","timestamp":"2026-04-29T09:28:20.833Z"}
+{"level":"info","message":"Socket connected: FPw3dZnlw2m2sSaZAAAT","service":"photodiary-backend","timestamp":"2026-04-29T09:28:24.794Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T09:28:24.799Z"}
+{"level":"info","message":"Socket disconnected: FPw3dZnlw2m2sSaZAAAT","service":"photodiary-backend","timestamp":"2026-04-29T09:28:25.228Z"}
+{"level":"info","message":"Socket connected: 0BgRZqZX32Kino1ZAAAV","service":"photodiary-backend","timestamp":"2026-04-29T09:28:25.236Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T09:28:25.243Z"}
+{"level":"info","message":"Socket disconnected: ZN6zcGUqaCB5K6HFAAAR","service":"photodiary-backend","timestamp":"2026-04-29T09:28:26.152Z"}
+{"level":"info","message":"Socket disconnected: 0BgRZqZX32Kino1ZAAAV","service":"photodiary-backend","timestamp":"2026-04-29T09:28:26.769Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T09:29:24.353Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T09:29:24.383Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T09:29:24.649Z"}
+{"level":"info","message":"Socket connected: kVoSgsz8I4m2cDbMAAAB","service":"photodiary-backend","timestamp":"2026-04-29T09:29:24.720Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T09:29:24.730Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T09:29:26.050Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T09:29:26.079Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T09:29:26.344Z"}
+{"level":"info","message":"Socket connected: KkWOF3G6STZ8-2YhAAAB","service":"photodiary-backend","timestamp":"2026-04-29T09:29:27.803Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T09:29:27.844Z"}
+{"level":"info","message":"Socket disconnected: KkWOF3G6STZ8-2YhAAAB","service":"photodiary-backend","timestamp":"2026-04-29T09:29:29.397Z"}
+{"level":"info","message":"Socket connected: RepaiUO385duMWf8AAAD","service":"photodiary-backend","timestamp":"2026-04-29T09:29:30.425Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T09:29:30.450Z"}
+{"level":"info","message":"Socket disconnected: RepaiUO385duMWf8AAAD","service":"photodiary-backend","timestamp":"2026-04-29T09:29:30.792Z"}
+{"level":"info","message":"Socket connected: 11Sb84cmqzWfDUO9AAAF","service":"photodiary-backend","timestamp":"2026-04-29T09:29:30.803Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T09:29:30.808Z"}
+{"level":"info","message":"AI Response generated (622 chars)","service":"photodiary-backend","timestamp":"2026-04-29T09:29:35.050Z"}
+{"level":"info","message":"AI Response generated (1212 chars)","service":"photodiary-backend","timestamp":"2026-04-29T09:29:37.774Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T09:29:41.114Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T09:29:41.147Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T09:29:41.385Z"}
+{"level":"info","message":"Socket connected: KwBM3aL8EZuZ0tOaAAAB","service":"photodiary-backend","timestamp":"2026-04-29T09:29:41.533Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T09:29:41.542Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T09:41:15.783Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T09:41:15.814Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T09:41:16.090Z"}
+{"level":"info","message":"Socket connected: EbBnG2g39I7XBRD0AAAB","service":"photodiary-backend","timestamp":"2026-04-29T09:41:16.461Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T09:41:16.471Z"}
+{"level":"info","message":"Socket connected: u_H2dVrLpbI917gQAAAD","service":"photodiary-backend","timestamp":"2026-04-29T09:46:31.015Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T09:46:31.021Z"}
+{"level":"info","message":"Socket disconnected: u_H2dVrLpbI917gQAAAD","service":"photodiary-backend","timestamp":"2026-04-29T09:46:31.475Z"}
+{"level":"info","message":"Socket connected: pbBuvJtGxQ_Uuh88AAAF","service":"photodiary-backend","timestamp":"2026-04-29T09:46:31.482Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T09:46:31.488Z"}
+{"level":"info","message":"Socket disconnected: pbBuvJtGxQ_Uuh88AAAF","service":"photodiary-backend","timestamp":"2026-04-29T09:58:08.477Z"}
+{"level":"info","message":"Socket disconnected: EbBnG2g39I7XBRD0AAAB","service":"photodiary-backend","timestamp":"2026-04-29T09:59:34.686Z"}
+{"level":"info","message":"Socket connected: dr8-I1u3vZ8z1vB1AAAH","service":"photodiary-backend","timestamp":"2026-04-29T09:59:37.197Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T09:59:37.227Z"}
+{"level":"info","message":"Socket disconnected: dr8-I1u3vZ8z1vB1AAAH","service":"photodiary-backend","timestamp":"2026-04-29T09:59:37.606Z"}
+{"level":"info","message":"Socket connected: Z9RfmDmYh6WHvBQ9AAAJ","service":"photodiary-backend","timestamp":"2026-04-29T09:59:37.615Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T09:59:37.620Z"}
+{"level":"info","message":"AI Response generated (1233 chars)","service":"photodiary-backend","timestamp":"2026-04-29T09:59:42.163Z"}
+{"level":"info","message":"AI Response generated (943 chars)","service":"photodiary-backend","timestamp":"2026-04-29T09:59:44.131Z"}
+{"level":"info","message":"Entry 24 queued for AI processing","service":"photodiary-backend","timestamp":"2026-04-29T10:00:06.414Z"}
+{"entryId":24,"jobId":"entry_24","level":"info","message":"Processing job entry_24 for entry 24","service":"photodiary-backend","timestamp":"2026-04-29T10:00:06.482Z"}
+{"level":"info","message":"Starting AI analysis...","service":"photodiary-backend","timestamp":"2026-04-29T10:00:08.140Z"}
+{"latency":487,"level":"info","message":"AI Analysis complete. Latency: 487ms","service":"photodiary-backend","timestamp":"2026-04-29T10:00:08.627Z"}
+{"level":"info","message":"AI Response generated (1055 chars)","service":"photodiary-backend","timestamp":"2026-04-29T10:00:10.438Z"}
+{"level":"info","message":"AI Response generated (896 chars)","service":"photodiary-backend","timestamp":"2026-04-29T10:00:12.251Z"}
+{"level":"info","message":"Socket connected: Z4Mz55iOsHKE_vy9AAAL","service":"photodiary-backend","timestamp":"2026-04-29T10:00:19.413Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T10:00:19.418Z"}
+{"level":"info","message":"Socket disconnected: Z4Mz55iOsHKE_vy9AAAL","service":"photodiary-backend","timestamp":"2026-04-29T10:00:19.829Z"}
+{"level":"info","message":"Socket connected: 6YeAt7jmMxG1WR37AAAN","service":"photodiary-backend","timestamp":"2026-04-29T10:00:19.835Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T10:00:19.841Z"}
+{"level":"info","message":"Socket connected: IaNN1k1Bwy01dxjvAAAP","service":"photodiary-backend","timestamp":"2026-04-29T10:00:49.402Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T10:00:49.410Z"}
+{"level":"info","message":"Socket disconnected: IaNN1k1Bwy01dxjvAAAP","service":"photodiary-backend","timestamp":"2026-04-29T10:00:49.853Z"}
+{"level":"info","message":"Socket connected: DyS0AzPHH8vTXzNMAAAR","service":"photodiary-backend","timestamp":"2026-04-29T10:00:49.862Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T10:00:49.865Z"}
+{"level":"info","message":"Socket connected: wGh4TyBAd-FBR3FpAAAT","service":"photodiary-backend","timestamp":"2026-04-29T10:00:56.928Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T10:00:56.934Z"}
+{"level":"info","message":"Socket disconnected: wGh4TyBAd-FBR3FpAAAT","service":"photodiary-backend","timestamp":"2026-04-29T10:00:57.383Z"}
+{"level":"info","message":"Socket connected: 6egtTF83JztaAoZqAAAV","service":"photodiary-backend","timestamp":"2026-04-29T10:00:57.391Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T10:00:57.396Z"}
+{"level":"info","message":"Socket disconnected: Z9RfmDmYh6WHvBQ9AAAJ","service":"photodiary-backend","timestamp":"2026-04-29T10:35:21.465Z"}
+{"level":"info","message":"Socket disconnected: 6YeAt7jmMxG1WR37AAAN","service":"photodiary-backend","timestamp":"2026-04-29T10:37:13.257Z"}
+{"level":"info","message":"Socket disconnected: DyS0AzPHH8vTXzNMAAAR","service":"photodiary-backend","timestamp":"2026-04-29T10:37:14.139Z"}
+{"level":"info","message":"Socket disconnected: 6egtTF83JztaAoZqAAAV","service":"photodiary-backend","timestamp":"2026-04-29T10:37:14.926Z"}
+{"level":"info","message":"Socket connected: vTpTa3ND1qGQ3V83AAAX","service":"photodiary-backend","timestamp":"2026-04-29T10:37:18.078Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T10:37:18.088Z"}
+{"level":"info","message":"Socket disconnected: vTpTa3ND1qGQ3V83AAAX","service":"photodiary-backend","timestamp":"2026-04-29T10:37:18.476Z"}
+{"level":"info","message":"Socket connected: qqnML73MSPRj1r3PAAAZ","service":"photodiary-backend","timestamp":"2026-04-29T10:37:18.485Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T10:37:18.490Z"}
+{"level":"info","message":"AI Response generated (1051 chars)","service":"photodiary-backend","timestamp":"2026-04-29T10:37:22.840Z"}
+{"level":"info","message":"AI Response generated (932 chars)","service":"photodiary-backend","timestamp":"2026-04-29T10:37:25.450Z"}
+{"level":"info","message":"Socket connected: 7vEj1WAiB7lq0F9EAAAb","service":"photodiary-backend","timestamp":"2026-04-29T10:37:49.291Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T10:37:49.297Z"}
+{"level":"info","message":"Socket disconnected: 7vEj1WAiB7lq0F9EAAAb","service":"photodiary-backend","timestamp":"2026-04-29T10:37:49.736Z"}
+{"level":"info","message":"Socket connected: rt4DH7PrKdrwZrELAAAd","service":"photodiary-backend","timestamp":"2026-04-29T10:37:49.743Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T10:37:49.748Z"}
+{"level":"info","message":"Socket connected: 3UNsjub5M4wHiiniAAAf","service":"photodiary-backend","timestamp":"2026-04-29T10:38:24.120Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T10:38:24.127Z"}
+{"level":"info","message":"Socket disconnected: 3UNsjub5M4wHiiniAAAf","service":"photodiary-backend","timestamp":"2026-04-29T10:38:24.564Z"}
+{"level":"info","message":"Socket connected: nQZka7cQtRTwmUoRAAAh","service":"photodiary-backend","timestamp":"2026-04-29T10:38:24.573Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T10:38:24.576Z"}
+{"level":"info","message":"Socket disconnected: nQZka7cQtRTwmUoRAAAh","service":"photodiary-backend","timestamp":"2026-04-29T10:39:06.987Z"}
+{"level":"info","message":"Socket disconnected: rt4DH7PrKdrwZrELAAAd","service":"photodiary-backend","timestamp":"2026-04-29T10:39:11.430Z"}
+{"level":"info","message":"Entry 25 queued for AI processing","service":"photodiary-backend","timestamp":"2026-04-29T10:39:40.117Z"}
+{"entryId":25,"jobId":"entry_25","level":"info","message":"Processing job entry_25 for entry 25","service":"photodiary-backend","timestamp":"2026-04-29T10:39:40.149Z"}
+{"level":"info","message":"Starting AI analysis...","service":"photodiary-backend","timestamp":"2026-04-29T10:39:41.499Z"}
+{"latency":523,"level":"info","message":"AI Analysis complete. Latency: 523ms","service":"photodiary-backend","timestamp":"2026-04-29T10:39:42.022Z"}
+{"level":"info","message":"AI Response generated (1036 chars)","service":"photodiary-backend","timestamp":"2026-04-29T10:39:43.650Z"}
+{"level":"info","message":"AI Response generated (1050 chars)","service":"photodiary-backend","timestamp":"2026-04-29T10:39:46.493Z"}
+{"level":"info","message":"Socket connected: JBJ4DJXXzSrOx6mDAAAj","service":"photodiary-backend","timestamp":"2026-04-29T10:39:55.921Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T10:39:55.929Z"}
+{"level":"info","message":"Socket disconnected: JBJ4DJXXzSrOx6mDAAAj","service":"photodiary-backend","timestamp":"2026-04-29T10:39:56.375Z"}
+{"level":"info","message":"Socket connected: BaxxyN0qv5gQO9cMAAAl","service":"photodiary-backend","timestamp":"2026-04-29T10:39:56.382Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T10:39:56.385Z"}
+{"level":"info","message":"Socket disconnected: BaxxyN0qv5gQO9cMAAAl","service":"photodiary-backend","timestamp":"2026-04-29T10:39:58.819Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T10:48:47.683Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T10:48:47.713Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T10:48:47.985Z"}
+{"level":"info","message":"Socket connected: SsVlDHgKXMy6utFyAAAB","service":"photodiary-backend","timestamp":"2026-04-29T10:48:48.031Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T10:48:48.039Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T10:48:49.292Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T10:48:49.326Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T10:48:49.569Z"}
+{"level":"info","message":"Socket connected: GNi9o9dAXrlyZg-3AAAB","service":"photodiary-backend","timestamp":"2026-04-29T10:48:49.712Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T10:48:49.720Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T10:51:58.855Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T10:51:58.883Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T10:51:59.147Z"}
+{"level":"info","message":"Socket connected: 20SRYLQnFYraBPfQAAAB","service":"photodiary-backend","timestamp":"2026-04-29T10:51:59.461Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T10:51:59.469Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T10:53:47.173Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T10:53:47.206Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T10:53:47.481Z"}
+{"level":"info","message":"Socket connected: 8hXLJNHaTGdoGsATAAAB","service":"photodiary-backend","timestamp":"2026-04-29T10:53:47.528Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T10:53:47.536Z"}
+{"level":"info","message":"Socket disconnected: 8hXLJNHaTGdoGsATAAAB","service":"photodiary-backend","timestamp":"2026-04-29T11:00:13.835Z"}
+{"level":"info","message":"Socket connected: VyxjIhrd_qCDBmXMAAAD","service":"photodiary-backend","timestamp":"2026-04-29T11:04:10.145Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T11:04:10.163Z"}
+{"level":"info","message":"Socket disconnected: VyxjIhrd_qCDBmXMAAAD","service":"photodiary-backend","timestamp":"2026-04-29T11:04:10.553Z"}
+{"level":"info","message":"Socket connected: MhAjasZ0A7Md44RsAAAF","service":"photodiary-backend","timestamp":"2026-04-29T11:04:10.568Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T11:04:10.574Z"}
+{"level":"info","message":"AI Response generated (849 chars)","service":"photodiary-backend","timestamp":"2026-04-29T11:04:14.802Z"}
+{"level":"info","message":"AI Response generated (963 chars)","service":"photodiary-backend","timestamp":"2026-04-29T11:04:17.572Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T11:05:07.974Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T11:05:08.002Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T11:05:08.278Z"}
+{"level":"info","message":"Socket connected: BuqIQFlk_u_yST4qAAAB","service":"photodiary-backend","timestamp":"2026-04-29T11:05:08.355Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T11:05:08.362Z"}
+{"level":"info","message":"Entry 26 queued for AI processing","service":"photodiary-backend","timestamp":"2026-04-29T11:05:14.242Z"}
+{"entryId":26,"jobId":"entry_26","level":"info","message":"Processing job entry_26 for entry 26","service":"photodiary-backend","timestamp":"2026-04-29T11:05:14.301Z"}
+{"level":"info","message":"Starting AI analysis...","service":"photodiary-backend","timestamp":"2026-04-29T11:05:15.709Z"}
+{"latency":547,"level":"info","message":"AI Analysis complete. Latency: 547ms","service":"photodiary-backend","timestamp":"2026-04-29T11:05:16.256Z"}
+{"level":"info","message":"AI Response generated (1099 chars)","service":"photodiary-backend","timestamp":"2026-04-29T11:05:19.792Z"}
+{"level":"info","message":"AI Response generated (1123 chars)","service":"photodiary-backend","timestamp":"2026-04-29T11:05:21.986Z"}
+{"level":"info","message":"Socket connected: Vx_EXXHPPXue0d5iAAAD","service":"photodiary-backend","timestamp":"2026-04-29T11:05:51.636Z"}
+{"level":"info","message":"Socket Vx_EXXHPPXue0d5iAAAD joined share room share_c6e390d54ab0b5dad207b9a04751b1ac","service":"photodiary-backend","timestamp":"2026-04-29T11:05:51.643Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T11:05:51.759Z"}
+{"level":"info","message":"Socket disconnected: Vx_EXXHPPXue0d5iAAAD","service":"photodiary-backend","timestamp":"2026-04-29T11:05:52.044Z"}
+{"level":"info","message":"Socket connected: 3rl-iDXbVcc10KvGAAAF","service":"photodiary-backend","timestamp":"2026-04-29T11:05:52.051Z"}
+{"level":"info","message":"Socket 3rl-iDXbVcc10KvGAAAF joined share room share_c6e390d54ab0b5dad207b9a04751b1ac","service":"photodiary-backend","timestamp":"2026-04-29T11:05:52.056Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T11:05:52.163Z"}
+{"level":"info","message":"Socket disconnected: 3rl-iDXbVcc10KvGAAAF","service":"photodiary-backend","timestamp":"2026-04-29T11:05:55.700Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T11:20:46.702Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T11:20:46.733Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T11:20:46.788Z"}
+{"level":"info","message":"Socket connected: bCcfnlZjjuXYhEUBAAAB","service":"photodiary-backend","timestamp":"2026-04-29T11:24:23.020Z"}
+{"level":"info","message":"User null joined room user_null","service":"photodiary-backend","timestamp":"2026-04-29T11:24:23.033Z"}
+{"level":"info","message":"AI Response generated (995 chars)","service":"photodiary-backend","timestamp":"2026-04-29T11:24:28.132Z"}
+{"level":"info","message":"AI Response generated (959 chars)","service":"photodiary-backend","timestamp":"2026-04-29T11:24:30.225Z"}
+{"level":"info","message":"Entry 27 queued for AI processing","service":"photodiary-backend","timestamp":"2026-04-29T11:36:45.082Z"}
+{"entryId":27,"jobId":"entry_27","level":"info","message":"Processing job entry_27 for entry 27","service":"photodiary-backend","timestamp":"2026-04-29T11:36:45.147Z"}
+{"level":"info","message":"Starting AI analysis...","service":"photodiary-backend","timestamp":"2026-04-29T11:36:48.083Z"}
+{"latency":430,"level":"info","message":"AI Analysis complete. Latency: 430ms","service":"photodiary-backend","timestamp":"2026-04-29T11:36:48.513Z"}
+{"level":"info","message":"AI Response generated (840 chars)","service":"photodiary-backend","timestamp":"2026-04-29T11:36:50.682Z"}
+{"level":"info","message":"AI Response generated (651 chars)","service":"photodiary-backend","timestamp":"2026-04-29T11:36:53.507Z"}
+{"level":"info","message":"Socket connected: fdRPPEB--Un48C7CAAAD","service":"photodiary-backend","timestamp":"2026-04-29T11:37:02.673Z"}
+{"level":"info","message":"Socket fdRPPEB--Un48C7CAAAD joined share room share_616b10232e7c0f2d119f00fbea86be07 (1 viewers)","service":"photodiary-backend","timestamp":"2026-04-29T11:37:02.679Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T11:37:02.682Z"}
+{"level":"info","message":"Socket disconnected: fdRPPEB--Un48C7CAAAD","service":"photodiary-backend","timestamp":"2026-04-29T11:37:03.363Z"}
+{"level":"info","message":"Socket connected: 9Swq1ekTIeq25S4tAAAF","service":"photodiary-backend","timestamp":"2026-04-29T11:37:03.370Z"}
+{"level":"info","message":"Socket 9Swq1ekTIeq25S4tAAAF joined share room share_616b10232e7c0f2d119f00fbea86be07 (1 viewers)","service":"photodiary-backend","timestamp":"2026-04-29T11:37:03.376Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T11:37:03.379Z"}
+{"level":"info","message":"Socket connected: 6u8OwxM7vpfNkscxAAAH","service":"photodiary-backend","timestamp":"2026-04-29T11:37:24.832Z"}
+{"level":"info","message":"Socket 6u8OwxM7vpfNkscxAAAH joined share room share_616b10232e7c0f2d119f00fbea86be07 (2 viewers)","service":"photodiary-backend","timestamp":"2026-04-29T11:37:24.839Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T11:37:24.842Z"}
+{"level":"info","message":"Socket disconnected: 6u8OwxM7vpfNkscxAAAH","service":"photodiary-backend","timestamp":"2026-04-29T11:37:25.293Z"}
+{"level":"info","message":"Socket connected: bbaDdHmWm8uWaKmLAAAJ","service":"photodiary-backend","timestamp":"2026-04-29T11:37:25.307Z"}
+{"level":"info","message":"Socket bbaDdHmWm8uWaKmLAAAJ joined share room share_616b10232e7c0f2d119f00fbea86be07 (2 viewers)","service":"photodiary-backend","timestamp":"2026-04-29T11:37:25.317Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T11:37:25.320Z"}
+{"level":"info","message":"Socket connected: vQgN_yLNgVlgWWTnAAAL","service":"photodiary-backend","timestamp":"2026-04-29T11:37:40.441Z"}
+{"level":"info","message":"Socket vQgN_yLNgVlgWWTnAAAL joined share room share_616b10232e7c0f2d119f00fbea86be07 (3 viewers)","service":"photodiary-backend","timestamp":"2026-04-29T11:37:40.449Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T11:37:40.453Z"}
+{"level":"info","message":"Socket disconnected: vQgN_yLNgVlgWWTnAAAL","service":"photodiary-backend","timestamp":"2026-04-29T11:37:40.905Z"}
+{"level":"info","message":"Socket connected: cu54dIR4bjbPnIHDAAAN","service":"photodiary-backend","timestamp":"2026-04-29T11:37:40.915Z"}
+{"level":"info","message":"Socket cu54dIR4bjbPnIHDAAAN joined share room share_616b10232e7c0f2d119f00fbea86be07 (3 viewers)","service":"photodiary-backend","timestamp":"2026-04-29T11:37:40.923Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T11:37:40.924Z"}
+{"level":"info","message":"Socket disconnected: cu54dIR4bjbPnIHDAAAN","service":"photodiary-backend","timestamp":"2026-04-29T11:38:15.288Z"}
+{"level":"info","message":"Socket disconnected: bbaDdHmWm8uWaKmLAAAJ","service":"photodiary-backend","timestamp":"2026-04-29T11:38:23.347Z"}
+{"level":"info","message":"Socket connected: 6hU-MhaznfvlxHDDAAAP","service":"photodiary-backend","timestamp":"2026-04-29T11:40:52.863Z"}
+{"level":"info","message":"Socket 6hU-MhaznfvlxHDDAAAP joined share room share_0265dcf9f7ed7b95718784f5cd0369cf (1 viewers)","service":"photodiary-backend","timestamp":"2026-04-29T11:40:52.868Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T11:40:52.869Z"}
+{"level":"info","message":"Socket disconnected: 6hU-MhaznfvlxHDDAAAP","service":"photodiary-backend","timestamp":"2026-04-29T11:40:53.319Z"}
+{"level":"info","message":"Socket connected: q0LMvTApzJx91cQDAAAR","service":"photodiary-backend","timestamp":"2026-04-29T11:40:53.327Z"}
+{"level":"info","message":"Socket q0LMvTApzJx91cQDAAAR joined share room share_0265dcf9f7ed7b95718784f5cd0369cf (1 viewers)","service":"photodiary-backend","timestamp":"2026-04-29T11:40:53.332Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T11:40:53.332Z"}
+{"level":"info","message":"Socket disconnected: 9Swq1ekTIeq25S4tAAAF","service":"photodiary-backend","timestamp":"2026-04-29T11:40:57.712Z"}
+{"level":"info","message":"Socket disconnected: q0LMvTApzJx91cQDAAAR","service":"photodiary-backend","timestamp":"2026-04-29T11:40:58.330Z"}
+{"level":"info","message":"Socket connected: M1qgmj9AfJBaj0QFAAAT","service":"photodiary-backend","timestamp":"2026-04-29T11:41:04.608Z"}
+{"level":"info","message":"Socket M1qgmj9AfJBaj0QFAAAT joined share room share_0265dcf9f7ed7b95718784f5cd0369cf (1 viewers)","service":"photodiary-backend","timestamp":"2026-04-29T11:41:04.614Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T11:41:04.618Z"}
+{"level":"info","message":"Socket disconnected: M1qgmj9AfJBaj0QFAAAT","service":"photodiary-backend","timestamp":"2026-04-29T11:41:05.064Z"}
+{"level":"info","message":"Socket connected: IDlgRo5lpcssu7S4AAAV","service":"photodiary-backend","timestamp":"2026-04-29T11:41:05.072Z"}
+{"level":"info","message":"Socket IDlgRo5lpcssu7S4AAAV joined share room share_0265dcf9f7ed7b95718784f5cd0369cf (1 viewers)","service":"photodiary-backend","timestamp":"2026-04-29T11:41:05.077Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T11:41:05.080Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T11:44:16.562Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T11:44:16.595Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T11:44:16.661Z"}
+{"level":"info","message":"Socket connected: 6pec9w_HgG3uctB7AAAC","service":"photodiary-backend","timestamp":"2026-04-29T11:44:16.753Z"}
+{"level":"info","message":"Socket connected: pqdKnk1yngePhmfdAAAD","service":"photodiary-backend","timestamp":"2026-04-29T11:44:16.763Z"}
+{"level":"info","message":"User null joined room user_null","service":"photodiary-backend","timestamp":"2026-04-29T11:44:16.784Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T11:44:16.786Z"}
+{"level":"info","message":"Socket pqdKnk1yngePhmfdAAAD left share room share_0265dcf9f7ed7b95718784f5cd0369cf","service":"photodiary-backend","timestamp":"2026-04-29T11:46:27.455Z"}
+{"level":"info","message":"Socket pqdKnk1yngePhmfdAAAD joined share room share_0265dcf9f7ed7b95718784f5cd0369cf (1 viewers)","service":"photodiary-backend","timestamp":"2026-04-29T11:46:27.467Z"}
+{"level":"info","message":"Socket disconnected: pqdKnk1yngePhmfdAAAD","service":"photodiary-backend","timestamp":"2026-04-29T11:55:28.672Z"}
+{"level":"info","message":"Socket disconnected: 6pec9w_HgG3uctB7AAAC","service":"photodiary-backend","timestamp":"2026-04-29T11:55:28.677Z"}
+{"code":"ECONNRESET","errno":-4077,"level":"error","message":"Redis connection error: read ECONNRESET","service":"photodiary-backend","stack":"Error: read ECONNRESET\n    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20)","syscall":"read","timestamp":"2026-04-29T12:39:43.178Z"}
+{"level":"info","message":"Socket connected: fxVrP-7KgSYvKBKMAAAF","service":"photodiary-backend","timestamp":"2026-04-29T12:39:44.762Z"}
+{"level":"info","message":"User null joined room user_null","service":"photodiary-backend","timestamp":"2026-04-29T12:39:45.100Z"}
+{"level":"info","message":"Socket disconnected: fxVrP-7KgSYvKBKMAAAF","service":"photodiary-backend","timestamp":"2026-04-29T12:39:45.308Z"}
+{"level":"info","message":"Socket connected: jCpftVQHtHdmlo9QAAAH","service":"photodiary-backend","timestamp":"2026-04-29T12:39:47.192Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T12:39:47.227Z"}
+{"level":"info","message":"Socket disconnected: jCpftVQHtHdmlo9QAAAH","service":"photodiary-backend","timestamp":"2026-04-29T12:39:48.251Z"}
+{"level":"info","message":"Socket connected: o9L-VBtBj-3Pes8mAAAJ","service":"photodiary-backend","timestamp":"2026-04-29T12:39:50.461Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T12:39:50.627Z"}
+{"level":"info","message":"Socket disconnected: o9L-VBtBj-3Pes8mAAAJ","service":"photodiary-backend","timestamp":"2026-04-29T12:39:50.755Z"}
+{"level":"info","message":"Socket connected: 9PNxFIL9SeJJ8boyAAAL","service":"photodiary-backend","timestamp":"2026-04-29T12:39:50.826Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T12:39:50.843Z"}
+{"level":"info","message":"Socket connected: Od47Y2po87Vnnd8kAAAN","service":"photodiary-backend","timestamp":"2026-04-29T12:39:51.205Z"}
+{"level":"info","message":"Socket Od47Y2po87Vnnd8kAAAN joined share room share_0265dcf9f7ed7b95718784f5cd0369cf (1 viewers)","service":"photodiary-backend","timestamp":"2026-04-29T12:39:51.220Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T12:39:51.223Z"}
+{"level":"info","message":"Socket disconnected: Od47Y2po87Vnnd8kAAAN","service":"photodiary-backend","timestamp":"2026-04-29T12:39:51.637Z"}
+{"level":"info","message":"Socket connected: WPmlcoBs9Qe-Q-1hAAAP","service":"photodiary-backend","timestamp":"2026-04-29T12:39:51.653Z"}
+{"level":"info","message":"Socket WPmlcoBs9Qe-Q-1hAAAP joined share room share_0265dcf9f7ed7b95718784f5cd0369cf (1 viewers)","service":"photodiary-backend","timestamp":"2026-04-29T12:39:51.668Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T12:39:51.674Z"}
+{"level":"info","message":"AI Response generated (905 chars)","service":"photodiary-backend","timestamp":"2026-04-29T12:39:55.214Z"}
+{"level":"info","message":"AI Response generated (813 chars)","service":"photodiary-backend","timestamp":"2026-04-29T12:39:57.969Z"}
+{"level":"info","message":"Socket disconnected: WPmlcoBs9Qe-Q-1hAAAP","service":"photodiary-backend","timestamp":"2026-04-29T12:41:13.072Z"}
+{"code":"ECONNRESET","errno":-4077,"level":"error","message":"Redis connection error: write ECONNRESET","service":"photodiary-backend","stack":"Error: write ECONNRESET\n    at WriteWrap.onWriteComplete [as oncomplete] (node:internal/stream_base_commons:87:19)\n    at handleWriteReq (node:internal/stream_base_commons:62:21)\n    at writeGeneric (node:internal/stream_base_commons:148:15)\n    at Socket._writeGeneric (node:net:971:11)\n    at Socket._write (node:net:983:8)\n    at writeOrBuffer (node:internal/streams/writable:572:12)\n    at _write (node:internal/streams/writable:501:10)\n    at Writable.write (node:internal/streams/writable:510:10)\n    at EventEmitter.sendCommand (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\ioredis\\built\\Redis.js:406:29)\n    at Script.execute (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\ioredis\\built\\Script.js:59:26)","syscall":"write","timestamp":"2026-04-29T12:45:48.855Z"}
+{"level":"info","message":"Socket disconnected: 9PNxFIL9SeJJ8boyAAAL","service":"photodiary-backend","timestamp":"2026-04-29T12:45:48.941Z"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"verified-hagfish-76867.upstash.io","level":"error","message":"Redis connection error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io","service":"photodiary-backend","stack":"Error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)","syscall":"getaddrinfo","timestamp":"2026-04-29T12:45:49.064Z"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"verified-hagfish-76867.upstash.io","level":"error","message":"Redis connection error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io","service":"photodiary-backend","stack":"Error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)","syscall":"getaddrinfo","timestamp":"2026-04-29T12:45:49.177Z"}
+{"level":"info","message":"Socket connected: YSV22JKpwdfzXLhcAAAR","service":"photodiary-backend","timestamp":"2026-04-29T12:45:49.327Z"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"verified-hagfish-76867.upstash.io","level":"error","message":"Redis connection error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io","service":"photodiary-backend","stack":"Error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)","syscall":"getaddrinfo","timestamp":"2026-04-29T12:45:49.349Z"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"verified-hagfish-76867.upstash.io","level":"error","message":"Redis connection error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io","service":"photodiary-backend","stack":"Error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)","syscall":"getaddrinfo","timestamp":"2026-04-29T12:45:49.572Z"}
+{"level":"info","message":"Socket connected: BvaDrJb06fAGN9PCAAAT","service":"photodiary-backend","timestamp":"2026-04-29T12:45:49.673Z"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"verified-hagfish-76867.upstash.io","level":"error","message":"Redis connection error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io","service":"photodiary-backend","stack":"Error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)","syscall":"getaddrinfo","timestamp":"2026-04-29T12:45:49.846Z"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"verified-hagfish-76867.upstash.io","level":"error","message":"Redis connection error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io","service":"photodiary-backend","stack":"Error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)","syscall":"getaddrinfo","timestamp":"2026-04-29T12:45:50.159Z"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"verified-hagfish-76867.upstash.io","level":"error","message":"Redis connection error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io","service":"photodiary-backend","stack":"Error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)","syscall":"getaddrinfo","timestamp":"2026-04-29T12:45:50.522Z"}
+{"clientVersion":"5.22.0","code":"P1001","level":"error","message":"Auth Middleware Error: \nInvalid `prisma.user.findUnique()` invocation in\nD:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\authMiddleware.js:15:36\n\n  12 const token = authHeader.split(' ')[1];\n  13 const decoded = jwt.verify(token, process.env.JWT_SECRET);\n  14 \n→ 15 const user = await prisma.user.findUnique(\nCan't reach database server at `ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech:5432`\n\nPlease make sure your database server is running at `ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech:5432`.","meta":{"database_host":"ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech","database_port":5432,"modelName":"User"},"name":"PrismaClientKnownRequestError","service":"photodiary-backend","stack":"PrismaClientKnownRequestError: \nInvalid `prisma.user.findUnique()` invocation in\nD:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\authMiddleware.js:15:36\n\n  12 const token = authHeader.split(' ')[1];\n  13 const decoded = jwt.verify(token, process.env.JWT_SECRET);\n  14 \n→ 15 const user = await prisma.user.findUnique(\nCan't reach database server at `ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech:5432`\n\nPlease make sure your database server is running at `ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech:5432`.\n    at Vg.handleRequestError (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:7317)\n    at Vg.handleAndLogRequestError (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:6624)\n    at Vg.request (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:6308)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async a (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:191:9642)\n    at async authMiddleware (D:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\authMiddleware.js:15:18)","timestamp":"2026-04-29T12:45:50.716Z"}
+{"clientVersion":"5.22.0","code":"P1001","level":"error","message":"Auth Middleware Error: \nInvalid `prisma.user.findUnique()` invocation in\nD:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\authMiddleware.js:15:36\n\n  12 const token = authHeader.split(' ')[1];\n  13 const decoded = jwt.verify(token, process.env.JWT_SECRET);\n  14 \n→ 15 const user = await prisma.user.findUnique(\nCan't reach database server at `ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech:5432`\n\nPlease make sure your database server is running at `ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech:5432`.","meta":{"database_host":"ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech","database_port":5432,"modelName":"User"},"name":"PrismaClientKnownRequestError","service":"photodiary-backend","stack":"PrismaClientKnownRequestError: \nInvalid `prisma.user.findUnique()` invocation in\nD:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\authMiddleware.js:15:36\n\n  12 const token = authHeader.split(' ')[1];\n  13 const decoded = jwt.verify(token, process.env.JWT_SECRET);\n  14 \n→ 15 const user = await prisma.user.findUnique(\nCan't reach database server at `ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech:5432`\n\nPlease make sure your database server is running at `ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech:5432`.\n    at Vg.handleRequestError (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:7317)\n    at Vg.handleAndLogRequestError (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:6624)\n    at Vg.request (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:6308)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async a (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:191:9642)\n    at async authMiddleware (D:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\authMiddleware.js:15:18)","timestamp":"2026-04-29T12:45:50.729Z"}
+{"clientVersion":"5.22.0","code":"P1001","level":"error","message":"Auth Middleware Error: \nInvalid `prisma.user.findUnique()` invocation in\nD:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\authMiddleware.js:15:36\n\n  12 const token = authHeader.split(' ')[1];\n  13 const decoded = jwt.verify(token, process.env.JWT_SECRET);\n  14 \n→ 15 const user = await prisma.user.findUnique(\nCan't reach database server at `ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech:5432`\n\nPlease make sure your database server is running at `ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech:5432`.","meta":{"database_host":"ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech","database_port":5432,"modelName":"User"},"name":"PrismaClientKnownRequestError","service":"photodiary-backend","stack":"PrismaClientKnownRequestError: \nInvalid `prisma.user.findUnique()` invocation in\nD:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\authMiddleware.js:15:36\n\n  12 const token = authHeader.split(' ')[1];\n  13 const decoded = jwt.verify(token, process.env.JWT_SECRET);\n  14 \n→ 15 const user = await prisma.user.findUnique(\nCan't reach database server at `ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech:5432`\n\nPlease make sure your database server is running at `ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech:5432`.\n    at Vg.handleRequestError (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:7317)\n    at Vg.handleAndLogRequestError (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:6624)\n    at Vg.request (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:6308)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async a (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:191:9642)\n    at async authMiddleware (D:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\authMiddleware.js:15:18)","timestamp":"2026-04-29T12:45:50.885Z"}
+{"clientVersion":"5.22.0","code":"P1001","level":"error","message":"Auth Middleware Error: \nInvalid `prisma.user.findUnique()` invocation in\nD:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\authMiddleware.js:15:36\n\n  12 const token = authHeader.split(' ')[1];\n  13 const decoded = jwt.verify(token, process.env.JWT_SECRET);\n  14 \n→ 15 const user = await prisma.user.findUnique(\nCan't reach database server at `ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech:5432`\n\nPlease make sure your database server is running at `ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech:5432`.","meta":{"database_host":"ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech","database_port":5432,"modelName":"User"},"name":"PrismaClientKnownRequestError","service":"photodiary-backend","stack":"PrismaClientKnownRequestError: \nInvalid `prisma.user.findUnique()` invocation in\nD:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\authMiddleware.js:15:36\n\n  12 const token = authHeader.split(' ')[1];\n  13 const decoded = jwt.verify(token, process.env.JWT_SECRET);\n  14 \n→ 15 const user = await prisma.user.findUnique(\nCan't reach database server at `ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech:5432`\n\nPlease make sure your database server is running at `ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech:5432`.\n    at Vg.handleRequestError (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:7317)\n    at Vg.handleAndLogRequestError (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:6624)\n    at Vg.request (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:6308)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async a (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:191:9642)\n    at async authMiddleware (D:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\authMiddleware.js:15:18)","timestamp":"2026-04-29T12:45:50.912Z"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"verified-hagfish-76867.upstash.io","level":"error","message":"Redis connection error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io","service":"photodiary-backend","stack":"Error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)","syscall":"getaddrinfo","timestamp":"2026-04-29T12:45:50.938Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T13:41:17.445Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T13:41:17.492Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T13:41:17.577Z"}
+{"code":"ENETUNREACH","level":"error","message":"Redis connection error:","service":"photodiary-backend","stack":"AggregateError [ENETUNREACH]: \n    at internalConnectMultiple (node:net:1139:18)\n    at afterConnectMultiple (node:net:1712:7)","timestamp":"2026-04-29T13:41:17.627Z"}
+{"code":"ENETUNREACH","level":"error","message":"Redis connection error:","service":"photodiary-backend","stack":"AggregateError [ENETUNREACH]: \n    at internalConnectMultiple (node:net:1139:18)\n    at afterConnectMultiple (node:net:1712:7)","timestamp":"2026-04-29T13:41:17.701Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T13:41:19.081Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T13:41:19.107Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T13:41:19.154Z"}
+{"code":"ENETUNREACH","level":"error","message":"Redis connection error:","service":"photodiary-backend","stack":"AggregateError [ENETUNREACH]: \n    at internalConnectMultiple (node:net:1139:18)\n    at afterConnectMultiple (node:net:1712:7)","timestamp":"2026-04-29T13:41:19.183Z"}
+{"code":"ENETUNREACH","level":"error","message":"Redis connection error:","service":"photodiary-backend","stack":"AggregateError [ENETUNREACH]: \n    at internalConnectMultiple (node:net:1139:18)\n    at afterConnectMultiple (node:net:1712:7)","timestamp":"2026-04-29T13:41:19.248Z"}
+{"code":"ENETUNREACH","level":"error","message":"Redis connection error:","service":"photodiary-backend","stack":"AggregateError [ENETUNREACH]: \n    at internalConnectMultiple (node:net:1139:18)\n    at afterConnectMultiple (node:net:1712:7)","timestamp":"2026-04-29T13:41:19.365Z"}
+{"code":"ENETUNREACH","level":"error","message":"Redis connection error:","service":"photodiary-backend","stack":"AggregateError [ENETUNREACH]: \n    at internalConnectMultiple (node:net:1139:18)\n    at afterConnectMultiple (node:net:1712:7)","timestamp":"2026-04-29T13:41:19.523Z"}
+{"code":"ENETUNREACH","level":"error","message":"Redis connection error:","service":"photodiary-backend","stack":"AggregateError [ENETUNREACH]: \n    at internalConnectMultiple (node:net:1139:18)\n    at afterConnectMultiple (node:net:1712:7)","timestamp":"2026-04-29T13:41:19.750Z"}
+{"code":"ENETUNREACH","level":"error","message":"Redis connection error:","service":"photodiary-backend","stack":"AggregateError [ENETUNREACH]: \n    at internalConnectMultiple (node:net:1139:18)\n    at afterConnectMultiple (node:net:1712:7)","timestamp":"2026-04-29T13:41:20.015Z"}
+{"code":"ENETUNREACH","level":"error","message":"Redis connection error:","service":"photodiary-backend","stack":"AggregateError [ENETUNREACH]: \n    at internalConnectMultiple (node:net:1139:18)\n    at afterConnectMultiple (node:net:1712:7)","timestamp":"2026-04-29T13:41:20.329Z"}
+{"code":"ENETUNREACH","level":"error","message":"Redis connection error:","service":"photodiary-backend","stack":"AggregateError [ENETUNREACH]: \n    at internalConnectMultiple (node:net:1139:18)\n    at afterConnectMultiple (node:net:1712:7)","timestamp":"2026-04-29T13:41:20.690Z"}
+{"code":"ENETUNREACH","level":"error","message":"Redis connection error:","service":"photodiary-backend","stack":"AggregateError [ENETUNREACH]: \n    at internalConnectMultiple (node:net:1139:18)\n    at afterConnectMultiple (node:net:1712:7)","timestamp":"2026-04-29T13:41:23.897Z"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"verified-hagfish-76867.upstash.io","level":"error","message":"Redis connection error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io","service":"photodiary-backend","stack":"Error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)","syscall":"getaddrinfo","timestamp":"2026-04-29T14:21:02.732Z"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"verified-hagfish-76867.upstash.io","level":"error","message":"Redis connection error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io","service":"photodiary-backend","stack":"Error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)","syscall":"getaddrinfo","timestamp":"2026-04-29T14:21:03.278Z"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"verified-hagfish-76867.upstash.io","level":"error","message":"Redis connection error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io","service":"photodiary-backend","stack":"Error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)","syscall":"getaddrinfo","timestamp":"2026-04-29T14:21:03.852Z"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"verified-hagfish-76867.upstash.io","level":"error","message":"Redis connection error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io","service":"photodiary-backend","stack":"Error: getaddrinfo ENOTFOUND verified-hagfish-76867.upstash.io\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)","syscall":"getaddrinfo","timestamp":"2026-04-29T14:21:04.467Z"}
+{"clientVersion":"5.22.0","level":"error","message":"Cold Start Recovery failed: \nInvalid `prisma.entry.findMany()` invocation in\nD:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\workers\\aiWorker.js:81:45\n\n  78 // Cold Start Recovery: Pick up PENDING entries not in queue\n  79 const recoverStuckJobs = async () => {\n  80   logger.info('Running Cold Start Recovery check...');\n→ 81   const stuckEntries = await prisma.entry.findMany(\nCan't reach database server at `ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech:5432`\n\nPlease make sure your database server is running at `ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech:5432`.","name":"PrismaClientInitializationError","service":"photodiary-backend","stack":"PrismaClientInitializationError: \nInvalid `prisma.entry.findMany()` invocation in\nD:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\workers\\aiWorker.js:81:45\n\n  78 // Cold Start Recovery: Pick up PENDING entries not in queue\n  79 const recoverStuckJobs = async () => {\n  80   logger.info('Running Cold Start Recovery check...');\n→ 81   const stuckEntries = await prisma.entry.findMany(\nCan't reach database server at `ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech:5432`\n\nPlease make sure your database server is running at `ep-shiny-queen-ah9bs2tb.c-3.us-east-1.aws.neon.tech:5432`.\n    at Vg.handleRequestError (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:7620)\n    at Vg.handleAndLogRequestError (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:6624)\n    at Vg.request (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:182:6308)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async a (D:\\STUDY\\projects\\Photodiary\\diary_backend\\node_modules\\@prisma\\client\\runtime\\binary.js:191:9642)\n    at async recoverStuckJobs (D:\\STUDY\\projects\\Photodiary\\diary_backend\\src\\workers\\aiWorker.js:81:26)","timestamp":"2026-04-29T14:21:04.818Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T14:21:18.180Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T14:21:18.240Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T14:21:18.348Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T14:32:52.507Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T14:32:52.558Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T14:32:52.652Z"}
+{"level":"info","message":"Running Cold Start Recovery check...","service":"photodiary-backend","timestamp":"2026-04-29T14:33:40.278Z"}
+{"level":"info","message":"Scheduled Daily Cleanup Jobs.","service":"photodiary-backend","timestamp":"2026-04-29T14:33:40.331Z"}
+{"level":"info","message":"Server running on port 3000","service":"photodiary-backend","timestamp":"2026-04-29T14:33:40.428Z"}
+{"level":"info","message":"Socket connected: zTDIZKbigLT0kYbHAAAB","service":"photodiary-backend","timestamp":"2026-04-29T14:34:16.444Z"}
+{"level":"info","message":"User null joined room user_null","service":"photodiary-backend","timestamp":"2026-04-29T14:34:16.469Z"}
+{"level":"info","message":"AI Response generated (1038 chars)","service":"photodiary-backend","timestamp":"2026-04-29T14:34:21.666Z"}
+{"level":"info","message":"AI Response generated (953 chars)","service":"photodiary-backend","timestamp":"2026-04-29T14:34:23.827Z"}
+{"level":"info","message":"Entry 28 queued for AI processing","service":"photodiary-backend","timestamp":"2026-04-29T14:34:38.512Z"}
+{"entryId":28,"jobId":"entry_28","level":"info","message":"Processing job entry_28 for entry 28","service":"photodiary-backend","timestamp":"2026-04-29T14:34:38.578Z"}
+{"level":"info","message":"Starting AI analysis...","service":"photodiary-backend","timestamp":"2026-04-29T14:34:40.184Z"}
+{"latency":428,"level":"info","message":"AI Analysis complete. Latency: 428ms","service":"photodiary-backend","timestamp":"2026-04-29T14:34:40.613Z"}
+{"level":"info","message":"AI Response generated (1020 chars)","service":"photodiary-backend","timestamp":"2026-04-29T14:34:42.343Z"}
+{"level":"info","message":"AI Response generated (1023 chars)","service":"photodiary-backend","timestamp":"2026-04-29T14:34:45.075Z"}
+{"level":"info","message":"Socket connected: rQisijfHvz2UbZ0gAAAD","service":"photodiary-backend","timestamp":"2026-04-29T14:34:53.204Z"}
+{"level":"info","message":"Socket rQisijfHvz2UbZ0gAAAD joined share room share_695874c08f9a839d65d207373d3e7539 (1 viewers)","service":"photodiary-backend","timestamp":"2026-04-29T14:34:53.215Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T14:34:53.221Z"}
+{"level":"info","message":"Socket disconnected: rQisijfHvz2UbZ0gAAAD","service":"photodiary-backend","timestamp":"2026-04-29T14:34:53.648Z"}
+{"level":"info","message":"Socket connected: q-E5SAoJHxuhH9ulAAAF","service":"photodiary-backend","timestamp":"2026-04-29T14:34:53.659Z"}
+{"level":"info","message":"Socket q-E5SAoJHxuhH9ulAAAF joined share room share_695874c08f9a839d65d207373d3e7539 (1 viewers)","service":"photodiary-backend","timestamp":"2026-04-29T14:34:53.669Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T14:34:53.675Z"}
+{"level":"info","message":"Socket connected: rUIRKFGQ0_8HxdOTAAAH","service":"photodiary-backend","timestamp":"2026-04-29T14:35:07.293Z"}
+{"level":"info","message":"Socket rUIRKFGQ0_8HxdOTAAAH joined share room share_695874c08f9a839d65d207373d3e7539 (2 viewers)","service":"photodiary-backend","timestamp":"2026-04-29T14:35:07.304Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T14:35:07.309Z"}
+{"level":"info","message":"Socket disconnected: rUIRKFGQ0_8HxdOTAAAH","service":"photodiary-backend","timestamp":"2026-04-29T14:35:07.742Z"}
+{"level":"info","message":"Socket connected: wsjZsk7-MZSpshBLAAAJ","service":"photodiary-backend","timestamp":"2026-04-29T14:35:07.758Z"}
+{"level":"info","message":"Socket wsjZsk7-MZSpshBLAAAJ joined share room share_695874c08f9a839d65d207373d3e7539 (2 viewers)","service":"photodiary-backend","timestamp":"2026-04-29T14:35:07.768Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T14:35:07.769Z"}
+{"level":"info","message":"Socket disconnected: wsjZsk7-MZSpshBLAAAJ","service":"photodiary-backend","timestamp":"2026-04-29T14:35:12.039Z"}
+{"level":"info","message":"Socket disconnected: q-E5SAoJHxuhH9ulAAAF","service":"photodiary-backend","timestamp":"2026-04-29T14:35:13.652Z"}
+{"level":"info","message":"Socket connected: gvexyVkhpvrSz64NAAAL","service":"photodiary-backend","timestamp":"2026-04-29T14:36:34.586Z"}
+{"level":"info","message":"Socket gvexyVkhpvrSz64NAAAL joined share room share_26583b66482a44c2fce555c831fec054 (1 viewers)","service":"photodiary-backend","timestamp":"2026-04-29T14:36:34.598Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T14:36:34.600Z"}
+{"level":"info","message":"Socket disconnected: gvexyVkhpvrSz64NAAAL","service":"photodiary-backend","timestamp":"2026-04-29T14:36:35.081Z"}
+{"level":"info","message":"Socket connected: bBLn0KBNwnfOW2R9AAAN","service":"photodiary-backend","timestamp":"2026-04-29T14:36:35.100Z"}
+{"level":"info","message":"Socket bBLn0KBNwnfOW2R9AAAN joined share room share_26583b66482a44c2fce555c831fec054 (1 viewers)","service":"photodiary-backend","timestamp":"2026-04-29T14:36:35.114Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T14:36:35.121Z"}
+{"level":"info","message":"Socket disconnected: bBLn0KBNwnfOW2R9AAAN","service":"photodiary-backend","timestamp":"2026-04-29T14:36:38.613Z"}
+{"level":"info","message":"Socket connected: aUdR4OEYqLFIIDyrAAAP","service":"photodiary-backend","timestamp":"2026-04-29T14:36:46.251Z"}
+{"level":"info","message":"Socket aUdR4OEYqLFIIDyrAAAP joined share room share_26583b66482a44c2fce555c831fec054 (1 viewers)","service":"photodiary-backend","timestamp":"2026-04-29T14:36:46.265Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T14:36:46.270Z"}
+{"level":"info","message":"Socket disconnected: aUdR4OEYqLFIIDyrAAAP","service":"photodiary-backend","timestamp":"2026-04-29T14:36:46.664Z"}
+{"level":"info","message":"Socket connected: VZ-CfvkxB6V6Af02AAAR","service":"photodiary-backend","timestamp":"2026-04-29T14:36:46.680Z"}
+{"level":"info","message":"Socket VZ-CfvkxB6V6Af02AAAR joined share room share_26583b66482a44c2fce555c831fec054 (1 viewers)","service":"photodiary-backend","timestamp":"2026-04-29T14:36:46.687Z"}
+{"level":"info","message":"User 1 joined room user_1","service":"photodiary-backend","timestamp":"2026-04-29T14:36:46.688Z"}
+{"level":"info","message":"Socket disconnected: VZ-CfvkxB6V6Af02AAAR","service":"photodiary-backend","timestamp":"2026-04-29T14:37:03.573Z"}
+{"level":"info","message":"AI Response generated (184 chars)","service":"photodiary-backend","timestamp":"2026-04-29T14:37:13.071Z"}

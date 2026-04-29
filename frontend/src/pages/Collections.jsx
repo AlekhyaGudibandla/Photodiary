@@ -44,7 +44,15 @@ const Collections = () => {
     fetchCollections();
     const handleClickAway = () => setOpenMenuId(null);
     window.addEventListener('click', handleClickAway);
-    return () => window.removeEventListener('click', handleClickAway);
+    
+    window.addEventListener('entryCreated', handleRefresh);
+    window.addEventListener('entryDeleted', handleRefresh);
+    
+    return () => {
+      window.removeEventListener('click', handleClickAway);
+      window.removeEventListener('entryCreated', handleRefresh);
+      window.removeEventListener('entryDeleted', handleRefresh);
+    };
   }, []);
 
   const refreshDetailView = () => {

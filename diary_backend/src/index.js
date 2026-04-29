@@ -5,12 +5,15 @@ const cors = require('cors');
 const helmet = require('helmet');
 const prisma = require('./prisma');
 const logger = require('./lib/logger');
-const { initSocket } = require('./lib/socket');
+const { initSocket, getIO } = require('./lib/socket');
 const { aiQueue } = require('./lib/queue');
 const initAIWorker = require('./workers/aiWorker');
 const initCleanupJobs = require('./services/cleanupService');
 const { authMiddleware, aiRateLimiter } = require('./authMiddleware');
 const { validateEntry } = require('./middleware/validate');
+const multer = require('multer');
+const { uploadMedia } = require('./lib/cloudinaryService');
+const upload = multer({ storage: multer.memoryStorage() });
 
 const app = express();
 const server = http.createServer(app);
@@ -177,21 +180,24 @@ app.put("/entries/:id", authMiddleware, async (req, res) => {
   try {
     const { id } = req.params;
     const { title, content, isPublic, mood, sharePermission } = req.body;
+    const parsedId = parseInt(id);
+    if (isNaN(parsedId)) {
+      return res.status(400).json({ error: "Invalid entry ID" });
+    }
     
-    const existing = await prisma.entry.findUnique({ 
-      where: { id: parseInt(id), userId: req.userId } 
+    const existing = await prisma.entry.findFirst({ 
+      where: { id: parsedId, userId: req.userId } 
     });
 
     if (!existing) return res.status(404).json({ error: "Entry not found" });
 
     let shareHash = existing.shareHash;
     if (isPublic && !shareHash) {
-      const crypto = require('crypto');
       shareHash = crypto.randomBytes(16).toString('hex');
     }
 
     const entry = await prisma.entry.update({
-      where: { id: parseInt(id) },
+      where: { id: parsedId },
       data: { 
         title, 
         content, 
@@ -200,8 +206,15 @@ app.put("/entries/:id", authMiddleware, async (req, res) => {
         sharePermission: sharePermission || 'VIEW',
         mood: mood ? String(mood) : undefined,
         updatedAt: new Date()
-      }
+      },
+      include: { media: true, tags: true }
     });
+
+    // Notify collaborators viewing this shared item
+    if (entry.shareHash) {
+      getIO().to(`share_${entry.shareHash}`).emit('shared_item_updated', { type: 'entry', id: entry.id, data: entry });
+    }
+
     res.json(entry);
   } catch (error) {
     logger.error('Entry Update Error:', error);
@@ -214,17 +227,21 @@ app.put("/collections/:id", authMiddleware, async (req, res) => {
     const { id } = req.params;
     const { title, description, isPublic, sharePermission } = req.body;
     
-    const existing = await prisma.collection.findUnique({ where: { id: parseInt(id), userId: req.userId } });
+    const parsedId = parseInt(id);
+    if (isNaN(parsedId)) {
+      return res.status(400).json({ error: "Invalid collection ID" });
+    }
+
+    const existing = await prisma.collection.findFirst({ where: { id: parsedId, userId: req.userId } });
     if (!existing) return res.status(404).json({ error: "Collection not found" });
 
     let shareHash = existing.shareHash;
     if (isPublic && !shareHash) {
-      const crypto = require('crypto');
       shareHash = crypto.randomBytes(16).toString('hex');
     }
 
     const col = await prisma.collection.update({
-      where: { id: parseInt(id), userId: req.userId },
+      where: { id: parsedId },
       data: { 
         title, 
         description, 
@@ -233,6 +250,12 @@ app.put("/collections/:id", authMiddleware, async (req, res) => {
         sharePermission: sharePermission || 'VIEW'
       }
     });
+
+    // Notify collaborators viewing this shared collection
+    if (col.shareHash) {
+      getIO().to(`share_${col.shareHash}`).emit('shared_item_updated', { type: 'collection', id: col.id, data: col });
+    }
+
     res.json(col);
   } catch (error) {
     res.status(500).json({ error: "Failed to update collection" });
@@ -313,7 +336,7 @@ app.post("/entries/:id/comments", authMiddleware, async (req, res) => {
 });
 
 // Public Shared Entry Routes
-app.get("/shared/:hash", async (req, res) => {
+app.get("/shared/entry/:hash", async (req, res) => {
   try {
     const { hash } = req.params;
     const entry = await prisma.entry.findUnique({
@@ -336,14 +359,24 @@ app.get("/shared/:hash", async (req, res) => {
   }
 });
 
-app.put("/shared/:hash", async (req, res) => {
+app.put("/shared/entry/:hash", async (req, res) => {
   try {
     const { hash } = req.params;
-    const { title, content, mood } = req.body;
+    const { title, content, mood, media } = req.body;
 
     const existing = await prisma.entry.findUnique({ where: { shareHash: hash } });
     if (!existing || !existing.isPublic || existing.sharePermission !== 'EDIT') {
       return res.status(403).json({ error: "No permission to edit this entry" });
+    }
+
+    // Handle new media attachments if provided
+    if (media && media.length > 0) {
+      await Promise.all(media.map(m =>
+        prisma.$executeRawUnsafe(
+          `INSERT INTO "Media" ("url", "publicId", "type", "entryId") VALUES ($1, $2, $3, $4)`,
+          m.url, m.publicId, m.type || 'image', existing.id
+        )
+      ));
     }
 
     const entry = await prisma.entry.update({
@@ -353,10 +386,18 @@ app.put("/shared/:hash", async (req, res) => {
         content, 
         mood: mood ? String(mood) : undefined,
         updatedAt: new Date()
+      },
+      include: { 
+        media: true, 
+        tags: true, 
+        user: { select: { email: true } } 
       }
     });
+
+    getIO().to(`share_${hash}`).emit('shared_item_updated', { type: 'entry', id: entry.id, data: entry });
     res.json(entry);
   } catch (error) {
+    logger.error('Shared Entry Update Error:', error);
     res.status(500).json({ error: "Update failed" });
   }
 });
@@ -395,18 +436,113 @@ app.put("/shared/collection/:hash", async (req, res) => {
 
     const col = await prisma.collection.update({
       where: { shareHash: hash },
-      data: { title, description }
+      data: { title, description },
+      include: { 
+        entries: { include: { media: true } },
+        user: { select: { email: true } }
+      }
     });
+
+    getIO().to(`share_${hash}`).emit('shared_item_updated', { type: 'collection', id: col.id, data: col });
     res.json(col);
   } catch (error) {
+    logger.error('Shared Collection Update Error:', error);
     res.status(500).json({ error: "Update failed" });
   }
 });
 
+// Upload media for a shared entry (requires auth)
+app.post("/shared/entry/:hash/upload", authMiddleware, upload.single('file'), async (req, res) => {
+  try {
+    const { hash } = req.params;
+    const existing = await prisma.entry.findUnique({ where: { shareHash: hash } });
+    if (!existing || !existing.isPublic || existing.sharePermission !== 'EDIT') {
+      return res.status(403).json({ error: "No permission to upload to this entry" });
+    }
+
+    if (!req.file) return res.status(400).json({ error: "No file provided" });
+
+    const result = await uploadMedia(req.file.buffer);
+
+    // Attach media to the entry
+    await prisma.$executeRawUnsafe(
+      `INSERT INTO "Media" ("url", "publicId", "type", "entryId") VALUES ($1, $2, $3, $4)`,
+      result.url, result.publicId, result.type || 'image', existing.id
+    );
+
+    // Fetch updated entry to broadcast
+    const updatedEntry = await prisma.entry.findUnique({
+      where: { id: existing.id },
+      include: { media: true, tags: true, user: { select: { email: true } } }
+    });
+
+    getIO().to(`share_${hash}`).emit('shared_item_updated', { type: 'entry', id: existing.id, data: updatedEntry });
+    res.json(updatedEntry);
+  } catch (error) {
+    logger.error('Shared Upload Error:', error);
+    res.status(500).json({ error: "Upload failed" });
+  }
+});
+// Add an entry to a shared collection (requires auth — user adds their own entries)
+app.post("/shared/collection/:hash/entries/:entryId", authMiddleware, async (req, res) => {
+  try {
+    const { hash, entryId } = req.params;
+    const collection = await prisma.collection.findUnique({ where: { shareHash: hash } });
+    if (!collection || !collection.isPublic || collection.sharePermission !== 'EDIT') {
+      return res.status(403).json({ error: "No permission to modify this collection" });
+    }
+
+    // Verify the entry belongs to the authenticated user
+    const entry = await prisma.entry.findFirst({ where: { id: parseInt(entryId), userId: req.userId } });
+    if (!entry) return res.status(404).json({ error: "Entry not found or not yours" });
+
+    await prisma.collection.update({
+      where: { id: collection.id },
+      data: { entries: { connect: { id: parseInt(entryId) } } }
+    });
+
+    // Fetch updated collection and broadcast
+    const updated = await prisma.collection.findUnique({
+      where: { id: collection.id },
+      include: { entries: { include: { media: true } }, user: { select: { email: true } } }
+    });
+
+    getIO().to(`share_${hash}`).emit('shared_item_updated', { type: 'collection', id: collection.id, data: updated });
+    res.json(updated);
+  } catch (error) {
+    logger.error('Shared Collection Add Entry Error:', error);
+    res.status(500).json({ error: "Failed to add entry to collection" });
+  }
+});
+
+// Remove an entry from a shared collection (requires auth)
+app.delete("/shared/collection/:hash/entries/:entryId", authMiddleware, async (req, res) => {
+  try {
+    const { hash, entryId } = req.params;
+    const collection = await prisma.collection.findUnique({ where: { shareHash: hash } });
+    if (!collection || !collection.isPublic || collection.sharePermission !== 'EDIT') {
+      return res.status(403).json({ error: "No permission to modify this collection" });
+    }
+
+    await prisma.collection.update({
+      where: { id: collection.id },
+      data: { entries: { disconnect: { id: parseInt(entryId) } } }
+    });
+
+    const updated = await prisma.collection.findUnique({
+      where: { id: collection.id },
+      include: { entries: { include: { media: true } }, user: { select: { email: true } } }
+    });
+
+    getIO().to(`share_${hash}`).emit('shared_item_updated', { type: 'collection', id: collection.id, data: updated });
+    res.json(updated);
+  } catch (error) {
+    logger.error('Shared Collection Remove Entry Error:', error);
+    res.status(500).json({ error: "Failed to remove entry from collection" });
+  }
+});
+
 // 6. Media Routes (Cloudinary Integration)
-const multer = require('multer');
-const { uploadMedia } = require('./lib/cloudinaryService');
-const upload = multer({ storage: multer.memoryStorage() });
 
 app.post("/upload", authMiddleware, upload.single('file'), async (req, res) => {
   try {

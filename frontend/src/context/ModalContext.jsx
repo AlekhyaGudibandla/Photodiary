@@ -12,6 +12,7 @@ const ModalContext = createContext();
 export const ModalProvider = ({ children }) => {
   const [isEntryModalOpen, setIsEntryModalOpen] = useState(false);
   const [editingEntry, setEditingEntry] = useState(null);
+  const [sharedHash, setSharedHash] = useState(null);
   const [isCameraOpen, setIsCameraOpen] = useState(false);
   const [cameraCallback, setCameraCallback] = useState(null);
   const [collectionContext, setCollectionContext] = useState(null);
@@ -22,15 +23,17 @@ export const ModalProvider = ({ children }) => {
   const [shareData, setShareData] = useState(null); // { type, item, onUpdate }
   const [addExistingData, setAddExistingData] = useState(null); // { collectionId, onAdded }
 
-  const openEntryModal = (entry = null, collectionId = null) => {
+  const openEntryModal = (entry = null, collectionId = null, hash = null) => {
     setEditingEntry(entry);
     setCollectionContext(collectionId);
+    setSharedHash(hash);
     setIsEntryModalOpen(true);
   };
   const closeEntryModal = () => {
     setIsEntryModalOpen(false);
     setEditingEntry(null);
     setCollectionContext(null);
+    setSharedHash(null);
   };
 
   const openCamera = (onCapture) => {
@@ -70,6 +73,7 @@ export const ModalProvider = ({ children }) => {
               onClose={closeEntryModal} 
               editingEntry={editingEntry}
               collectionId={collectionContext}
+              sharedHash={sharedHash}
               onEntryCreated={() => window.dispatchEvent(new CustomEvent('entryCreated'))}
             />
           )}
