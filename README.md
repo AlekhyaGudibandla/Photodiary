@@ -1,34 +1,43 @@
-# 📸 Photodiary: Enterprise AI-Powered Life Companion
+# 📸 Photodiary: AI-Powered Life Companion
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/Node.js-v20+-blue.svg)](https://nodejs.org/)
 [![React Version](https://img.shields.io/badge/React-v18-61DAFB.svg)](https://reactjs.org/)
 [![AI Powered](https://img.shields.io/badge/AI-Groq%20%7C%20Gemini-orange.svg)](https://groq.com/)
 
-Photodiary is a sophisticated, privacy-first journaling platform that leverages advanced LLMs to transform your daily reflections into structured life insights. Designed with a premium "Glassmorphism" aesthetic, it acts as both a secure vault for your memories and an empathetic AI companion.
+Photodiary is a **privacy-first AI journaling platform** that transforms daily reflections into structured insights using LLMs. It combines real-time interaction, asynchronous AI processing, and structured storage to create a system that is both responsive and scalable.
+
+Unlike traditional journaling apps, Photodiary is designed as a **hybrid real-time + background processing system**, ensuring that AI workloads never degrade user experience.
 
 ---
 
 ## 🌟 Key Features
 
 ### 🧠 Empathic AI Companion
-- **Real-time Voice/Text Chat**: Engage in deep, multi-turn conversations with a life companion that remembers your context and supports your growth.
-- **Automated Journaling**: The AI can automatically synthesize your conversations into poetic, structured diary entries.
+- **Real-time Voice/Text Chat**: Multi-turn conversational interface with persistent context using WebSockets.
+- **Automated Journaling**: AI converts conversations into structured, readable diary entries with tone-aware summarization.
+
+---
 
 ### 📊 Deep Insights & Analytics
-- **Mood Tracking**: Visualizes emotional trends over 14 and 30-day windows.
-- **Tag Cloud & Patterns**: Automatically extracts themes like "Workout," "Family," or "Productivity" from your text.
-- **Streak Management**: Gamified consistency tracking to encourage daily reflection.
+- **Mood Tracking**: Visualizes emotional trends over 14 and 30-day rolling windows.
+- **Tag Cloud & Patterns**: Automatic semantic tagging (e.g., productivity, health, stress).
+- **Streak Management**: Tracks journaling consistency to encourage habit formation.
+
+---
 
 ### 📁 Advanced Memory Management
-- **Smart Collections**: Organize memories into "Albums" with automated preview thumbnails.
-- **Global Search**: Instantly find any moment using full-text search across your history.
-- **Bucket List & Goals**: Track your long-term aspirations alongside your daily thoughts.
+- **Smart Collections**: Organize entries into albums with generated previews.
+- **Global Search**: Full-text search across all entries.
+- **Bucket List & Goals**: Integrated long-term tracking alongside daily logs.
 
-### 🔐 Enterprise-Grade Security
-- **JWT Authentication**: Secure, token-based session management.
-- **Push Protection**: Automated scanning to prevent secrets from reaching version control.
-- **Privacy First**: All entries are private by default with granular share controls.
+---
+
+### 🔐 Security
+- **JWT Authentication**: Stateless session management.
+- **Bcrypt Hashing**: Secure password storage.
+- **Input Sanitization & XSS Protection**
+- **Privacy First**: Entries are private by default.
 
 ---
 
@@ -44,68 +53,197 @@ graph TD
     Worker -->|LLM API| Groq[Groq / Llama 3]
     Worker -->|Vision API| Gemini[Google Gemini]
     BE -->|Upload| Cloud[Cloudinary Media Store]
-```
+````
 
-### 💻 Technology Stack
-- **Frontend**: React 18, Vite, Framer Motion (Animations), Lucide (Icons), TailwindCSS.
-- **Backend**: Node.js, Express, Socket.io (Real-time), BullMQ (Background Jobs).
-- **Database**: PostgreSQL with Prisma ORM.
-- **AI/ML**: Groq SDK (LLM), Google Generative AI (Vision), Cloudinary (Image Optimization).
-- **Security**: Helmet.js, Bcrypt, JWT, XSS Filters.
+---
+
+## ⚙️ Key Engineering Decisions
+
+### Async AI Processing (BullMQ + Redis)
+
+AI inference is latency-heavy and can vary significantly in response time. To prevent blocking API responses:
+
+* User requests are processed synchronously only for persistence
+* AI-related tasks are offloaded to a Redis-backed queue (BullMQ)
+* Background workers handle:
+
+  * summarization
+  * tag extraction
+  * mood analysis
+
+This design ensures:
+
+* low response latency for user actions
+* fault-tolerant processing with retries
+* ability to scale workers independently
+
+---
+
+### Real-Time + Async Hybrid System
+
+* **Socket.io** handles real-time chat and streaming responses
+* **BullMQ workers** handle post-processing asynchronously
+
+This separation allows:
+
+* instant interaction during conversations
+* heavy computation without degrading UX
+
+---
+
+### Modular Backend Architecture
+
+Backend is structured into clear layers:
+
+* Controllers → request/response handling
+* Services → business logic
+* Queue layer → async job orchestration
+* Prisma → database access
+
+This improves:
+
+* maintainability
+* extensibility of AI features
+* testability
+
+---
+
+### Data Layer Design
+
+* PostgreSQL for structured relational data
+* Indexed fields for efficient querying (search, analytics)
+* Prisma ORM for type safety and faster development
+
+---
+
+## 🔄 Data Flow
+
+1. User creates an entry or sends a message
+2. API stores data in PostgreSQL
+3. AI job is enqueued in Redis
+4. Worker processes:
+
+   * summarization
+   * tagging
+   * insights extraction
+5. Results are persisted and reflected in UI
+
+---
+
+## 💻 Technology Stack
+
+### Frontend
+
+* React 18, Vite
+* TailwindCSS (Glassmorphism UI)
+* Framer Motion
+* Lucide Icons
+
+### Backend
+
+* Node.js, Express
+* Socket.io (real-time communication)
+* BullMQ (background processing)
+
+### Database & Infra
+
+* PostgreSQL with Prisma ORM
+* Redis (queue + caching layer)
+* Cloudinary (media storage & optimization)
+
+### AI/ML
+
+* Groq SDK (LLM inference)
+* Google Gemini (vision tasks)
+
+### Security
+
+* Helmet.js
+* Bcrypt
+* JWT
+* XSS Filters
 
 ---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v20 or higher)
-- PostgreSQL instance
-- Redis (for background AI processing)
-- Groq & Google Cloud API Keys
+
+* Node.js (v20 or higher)
+* PostgreSQL instance
+* Redis (for background AI processing)
+* Groq & Google Cloud API Keys
+
+---
 
 ### Installation
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/your-username/Photodiary.git
-   cd Photodiary
-   ```
+1. **Clone the repository**
 
-2. **Backend Setup**:
-   ```bash
-   cd diary_backend
-   npm install
-   cp .env.example .env # Add your keys
-   npx prisma generate
-   npx prisma migrate dev
-   npm run dev
-   ```
+```bash
+git clone https://github.com/your-username/Photodiary.git
+cd Photodiary
+```
 
-3. **Frontend Setup**:
-   ```bash
-   cd ../frontend
-   npm install
-   npm run dev
-   ```
+2. **Backend Setup**
+
+```bash
+cd diary_backend
+npm install
+cp .env.example .env
+
+# Add:
+# DATABASE_URL=
+# REDIS_URL=
+# GROQ_API_KEY=
+# GEMINI_API_KEY=
+# CLOUDINARY_*
+
+npx prisma generate
+npx prisma migrate dev
+npm run dev
+```
+
+3. **Frontend Setup**
+
+```bash
+cd ../frontend
+npm install
+npm run dev
+```
 
 ---
 
 ## ☁️ Deployment
-For a full production deployment guide (Render + Vercel + Neon), see our **[Deployment Documentation](./deployment_guide.md)**.
+
+Recommended:
+
+* Frontend → Vercel
+* Backend → Render / Fly.io
+* Database → Neon / Supabase
+* Redis → Upstash
+
+For full setup, see `deployment_guide.md`.
 
 ---
 
 ## 🛠️ Roadmap
-- [ ] **Mobile App**: React Native integration for on-the-go logging.
-- [ ] **Advanced Vision**: Real-time object detection and storytelling from uploaded photos.
-- [ ] **Multi-lingual Support**: AI companion support for 50+ languages.
-- [ ] **End-to-End Encryption**: Optional E2EE for ultra-secure "Gold" users.
+
+* [ ] Mobile App (React Native)
+* [ ] Advanced Vision (image → narrative)
+* [ ] Multi-lingual AI support
+* [ ] End-to-End Encryption (E2EE)
 
 ---
 
-## 📄 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 💭 What This Project Demonstrates
+
+* Designing asynchronous systems using queues and workers
+* Handling AI workloads without blocking user experience
+* Building real-time + background hybrid architectures
+* Structuring scalable backend systems with clear separation of concerns
+
 
 ---
 
-**Built with ❤️ by the Photodiary Team.**
+Built with a focus on combining AI systems, scalable backend design, and real-world usability.
